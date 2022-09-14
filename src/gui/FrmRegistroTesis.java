@@ -21,7 +21,7 @@ public class FrmRegistroTesis extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblTituloTesis = new JLabel("Registro de Tesis");
-		lblTituloTesis.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblTituloTesis.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
 		lblTituloTesis.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTituloTesis.setBounds(10, 21, 864, 27);
 		getContentPane().add(lblTituloTesis);
