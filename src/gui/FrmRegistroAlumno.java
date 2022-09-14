@@ -5,6 +5,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class FrmRegistroAlumno extends JInternalFrame {
 
@@ -20,6 +21,7 @@ public class FrmRegistroAlumno extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Registrar Alumno");
+		lblNewLabel.setIcon(new ImageIcon(FrmRegistroAlumno.class.getResource("/iconos/Boy.gif")));
 		lblNewLabel.setFont(new Font("Arial Narrow", Font.ITALIC, 32));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 864, 61);
