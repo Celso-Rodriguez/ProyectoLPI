@@ -2,6 +2,8 @@ package gui;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class FrmRegistroLibro extends JInternalFrame {
 
@@ -15,5 +17,10 @@ public class FrmRegistroLibro extends JInternalFrame {
 		setTitle("Ingreso de Libro");
 		setBounds(100, 100, 900, 600);
 		getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("REGISTRO DE LIBRO");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(10, 11, 864, 37);
+		getContentPane().add(lblNewLabel);
 	}
 }
