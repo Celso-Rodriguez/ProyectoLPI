@@ -100,7 +100,7 @@ public class FrmRegistroLibro extends JInternalFrame implements ActionListener {
 		
 		btnRegistrar = new JButton("REGISTRAR");
 		btnRegistrar.addActionListener(this);
-		btnRegistrar.setBounds(279, 430, 89, 23);
+		btnRegistrar.setBounds(279, 430, 154, 46);
 		getContentPane().add(btnRegistrar);
 	}
 	public void actionPerformed(ActionEvent e) {
