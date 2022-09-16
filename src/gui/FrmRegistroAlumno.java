@@ -8,6 +8,8 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class FrmRegistroAlumno extends JInternalFrame {
 
@@ -17,6 +19,7 @@ public class FrmRegistroAlumno extends JInternalFrame {
 	private JTextField txtTelefono;
 	private JTextField txtCorreo;
 	private JTextField txtFechaDeNacimiento;
+	private JTextField txtFechaRegistro;
 
 	public FrmRegistroAlumno() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -44,7 +47,7 @@ public class FrmRegistroAlumno extends JInternalFrame {
 		lblApellido.setBounds(150, 170, 76, 22);
 		getContentPane().add(lblApellido);
 		
-		JLabel lblTelefono = new JLabel("Telefono :");
+		JLabel lblTelefono = new JLabel("Tel\u00E9fono :");
 		lblTelefono.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 18));
 		lblTelefono.setBounds(150, 216, 82, 22);
 		getContentPane().add(lblTelefono);
@@ -85,7 +88,40 @@ public class FrmRegistroAlumno extends JInternalFrame {
 		getContentPane().add(txtFechaDeNacimiento);
 		
 		JButton btnAgregar = new JButton("AGREGAR");
-		btnAgregar.setBounds(551, 141, 169, 51);
+		btnAgregar.setBounds(196, 384, 169, 51);
 		getContentPane().add(btnAgregar);
+		
+		JLabel lblEstado = new JLabel("Estado :");
+		lblEstado.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEstado.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 18));
+		lblEstado.setBounds(563, 216, 103, 22);
+		getContentPane().add(lblEstado);
+		
+		JLabel lblFechaDeRegistro = new JLabel("Fecha de Registro :");
+		lblFechaDeRegistro.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblFechaDeRegistro.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 18));
+		lblFechaDeRegistro.setBounds(487, 158, 179, 22);
+		getContentPane().add(lblFechaDeRegistro);
+		
+		JLabel lblPais = new JLabel("Pa\u00EDs :");
+		lblPais.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPais.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 18));
+		lblPais.setBounds(563, 269, 103, 22);
+		getContentPane().add(lblPais);
+		
+		txtFechaRegistro = new JTextField();
+		txtFechaRegistro.setColumns(10);
+		txtFechaRegistro.setBounds(676, 162, 153, 20);
+		getContentPane().add(txtFechaRegistro);
+		
+		JComboBox cboEstado = new JComboBox();
+		cboEstado.setModel(new DefaultComboBoxModel(new String[] {"[Seleccionar]", "Activo", "Inactivo"}));
+		cboEstado.setBounds(676, 219, 153, 22);
+		getContentPane().add(cboEstado);
+		
+		JComboBox cboPais = new JComboBox();
+		cboPais.setModel(new DefaultComboBoxModel(new String[] {"[Seleccionar]", "Peru", "Argentina", "Brasil", "Bolivia", "Uruguay", "Ecuador", "Colombia"}));
+		cboPais.setBounds(676, 272, 153, 22);
+		getContentPane().add(cboPais);
 	}
 }
