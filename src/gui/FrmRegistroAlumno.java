@@ -1,15 +1,16 @@
 package gui;
 
+import java.awt.Font;
+import java.util.ResourceBundle;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
+
+import util.JComboBoxBD;
 
 public class FrmRegistroAlumno extends JInternalFrame {
 
@@ -20,7 +21,9 @@ public class FrmRegistroAlumno extends JInternalFrame {
 	private JTextField txtCorreo;
 	private JTextField txtFechaDeNacimiento;
 	private JTextField txtFechaRegistro;
-
+	private JComboBoxBD cboPais;
+	private ResourceBundle rb = ResourceBundle.getBundle("combo");
+	
 	public FrmRegistroAlumno() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setMaximizable(true);
@@ -91,12 +94,7 @@ public class FrmRegistroAlumno extends JInternalFrame {
 		btnAgregar.setBounds(196, 384, 169, 51);
 		getContentPane().add(btnAgregar);
 		
-		JLabel lblEstado = new JLabel("Estado :");
-		lblEstado.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEstado.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 18));
-		lblEstado.setBounds(563, 216, 103, 22);
-		getContentPane().add(lblEstado);
-		
+	
 		JLabel lblFechaDeRegistro = new JLabel("Fecha de Registro :");
 		lblFechaDeRegistro.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblFechaDeRegistro.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 18));
@@ -114,13 +112,7 @@ public class FrmRegistroAlumno extends JInternalFrame {
 		txtFechaRegistro.setBounds(676, 162, 153, 20);
 		getContentPane().add(txtFechaRegistro);
 		
-		JComboBox cboEstado = new JComboBox();
-		cboEstado.setModel(new DefaultComboBoxModel(new String[] {"[Seleccionar]", "Activo", "Inactivo"}));
-		cboEstado.setBounds(676, 219, 153, 22);
-		getContentPane().add(cboEstado);
-		
-		JComboBox cboPais = new JComboBox();
-		cboPais.setModel(new DefaultComboBoxModel(new String[] {"[Seleccionar]", "Peru", "Argentina", "Brasil", "Bolivia", "Uruguay", "Ecuador", "Colombia"}));
+		cboPais = new JComboBoxBD(rb.getString("SQL_PAIS"));
 		cboPais.setBounds(676, 272, 153, 22);
 		getContentPane().add(cboPais);
 	}
