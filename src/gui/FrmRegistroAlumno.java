@@ -108,7 +108,7 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		getContentPane().add(lblPais);
 
 		cboPais = new JComboBoxBD(rb.getString("SQL_PAIS"));
-		cboPais.setBounds(603, 219, 253, 22);
+		cboPais.setBounds(603, 219, 240, 22);
 		getContentPane().add(cboPais);
 		
 		JButton btnEliminar = new JButton("ELIMINAR");
