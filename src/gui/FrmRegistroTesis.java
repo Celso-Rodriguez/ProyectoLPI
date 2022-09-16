@@ -1,14 +1,11 @@
 package gui;
 
+import java.awt.Font;
+
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
-import javax.swing.DefaultComboBoxModel;
 
 public class FrmRegistroTesis extends JInternalFrame {
 
