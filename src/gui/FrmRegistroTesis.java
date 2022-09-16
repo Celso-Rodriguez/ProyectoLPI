@@ -5,6 +5,10 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
 
 public class FrmRegistroTesis extends JInternalFrame {
 
@@ -17,13 +21,13 @@ public class FrmRegistroTesis extends JInternalFrame {
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("Ingreso de Tesis");
-		setBounds(100, 100, 900, 600);
+		setBounds(100, 100, 623, 481);
 		getContentPane().setLayout(null);
 		
 		JLabel lblTituloTesis = new JLabel("Registro de Tesis");
-		lblTituloTesis.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
+		lblTituloTesis.setBounds(10, 21, 587, 43);
+		lblTituloTesis.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 19));
 		lblTituloTesis.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTituloTesis.setBounds(10, 21, 864, 27);
 		getContentPane().add(lblTituloTesis);
 	}
 }
