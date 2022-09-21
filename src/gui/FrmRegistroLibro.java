@@ -42,25 +42,25 @@ public class FrmRegistroLibro extends JInternalFrame implements ActionListener {
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblTitulo = new JLabel("T\u00EDtulo");
-		lblTitulo.setForeground(Color.BLUE);
+		lblTitulo.setForeground(Color.BLACK);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTitulo.setBounds(155, 156, 46, 28);
 		getContentPane().add(lblTitulo);
 		
 		JLabel lblAnio = new JLabel("A\u00F1o");
-		lblAnio.setForeground(Color.BLUE);
+		lblAnio.setForeground(Color.BLACK);
 		lblAnio.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblAnio.setBounds(155, 195, 46, 29);
 		getContentPane().add(lblAnio);
 		
 		JLabel lblSerie = new JLabel("Serie");
-		lblSerie.setForeground(Color.BLUE);
+		lblSerie.setForeground(Color.BLACK);
 		lblSerie.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblSerie.setBounds(158, 235, 46, 32);
 		getContentPane().add(lblSerie);
 		
 		JLabel lblNewLabel_1 = new JLabel("Categor\u00EDa");
-		lblNewLabel_1.setForeground(Color.BLUE);
+		lblNewLabel_1.setForeground(Color.BLACK);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_1.setBounds(158, 278, 97, 31);
 		getContentPane().add(lblNewLabel_1);
@@ -87,7 +87,7 @@ public class FrmRegistroLibro extends JInternalFrame implements ActionListener {
 		btnRegistrar = new JButton("REGISTRAR");
 		btnRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnRegistrar.addActionListener(this);
-		btnRegistrar.setBounds(279, 403, 154, 46);
+		btnRegistrar.setBounds(425, 436, 154, 46);
 		getContentPane().add(btnRegistrar);
 	}
 	public void actionPerformed(ActionEvent e) {
