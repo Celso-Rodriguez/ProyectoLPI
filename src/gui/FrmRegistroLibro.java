@@ -10,20 +10,25 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import entidad.Categoria;
+import entidad.Libro;
+import model.LibroModel;
 import util.JComboBoxBD;
+import util.Validaciones;
 
 public class FrmRegistroLibro extends JInternalFrame implements ActionListener {
+	
+	private ResourceBundle rb = ResourceBundle.getBundle("combo");
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtTitulo;
 	private JTextField txtAnio;
 	private JTextField txtSerie;
 	private JComboBoxBD cboCategoria;
-	
-	private ResourceBundle rb = ResourceBundle.getBundle("combo");
 	private JButton btnRegistrar;
 
 	public FrmRegistroLibro() {
@@ -59,11 +64,11 @@ public class FrmRegistroLibro extends JInternalFrame implements ActionListener {
 		lblSerie.setBounds(158, 235, 46, 32);
 		getContentPane().add(lblSerie);
 		
-		JLabel lblNewLabel_1 = new JLabel("Categor\u00EDa");
-		lblNewLabel_1.setForeground(Color.BLACK);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(158, 278, 97, 31);
-		getContentPane().add(lblNewLabel_1);
+		JLabel lblCategoria = new JLabel("Categor\u00EDa");
+		lblCategoria.setForeground(Color.BLACK);
+		lblCategoria.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCategoria.setBounds(158, 278, 97, 31);
+		getContentPane().add(lblCategoria);
 		
 		txtTitulo = new JTextField();
 		txtTitulo.setBounds(254, 162, 325, 20);
@@ -96,6 +101,47 @@ public class FrmRegistroLibro extends JInternalFrame implements ActionListener {
 		}
 	}
 	
+	public void mensaje(String ms){
+		JOptionPane.showMessageDialog(this, ms);
+	}
 	protected void actionPerformedBtnRegistrarJButton(ActionEvent e) {
+		
+		String tit  = txtTitulo.getText().trim();
+		String anio = txtAnio.getText().trim();
+		String ser  = txtSerie.getText().trim();														
+		int  index  = cboCategoria.getSelectedIndex();
+		
+		if(!tit.matches(Validaciones.TEXTO)){
+			mensaje ("El titulo debe tener de 2 a 20 caracteres");
+		}else if (!anio.matches(Validaciones.ANNO)) {
+			mensaje ("El año debe tener 4 digitos");
+		}else if (!ser.matches(Validaciones.TEXTO_NUMERO)) {
+			mensaje ("El numero de serie no es valido");
+		}else if(index==0) {
+			mensaje ("Seleccione un categoria");
+		}else {
+			String cate        = cboCategoria.getSelectedItem().toString();
+			String idCategoria = cate.split(":")[0];
+			
+			Categoria objCategoria = new Categoria();
+			objCategoria.setIdCategoria(Integer.parseInt(idCategoria));
+			
+			Libro objLibro = new Libro();
+			objLibro.setTitulo(tit);
+			objLibro.setAnio(Integer.parseInt(anio));
+			objLibro.setSerie(ser);
+			objLibro.setEstado(1);
+			objLibro.setCategoria(objCategoria);
+			
+			LibroModel model = new LibroModel();
+			int s = model.insertaLibro(objLibro);
+			
+			if (s > 0) {
+				mensaje ("SE INSERTO CORRECTAMENTE");
+			}else {
+				mensaje("ERROR EN EL REGISTRO");
+			}
+		}
+		
 	}
 }

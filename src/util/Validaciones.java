@@ -21,4 +21,5 @@ public class Validaciones {
 	public static final String NUMERO = "[0-9]{1,1000}";
 	public static final String SERIECRUDLIBRO= "[a-zA-ZáéíóúñüÁÉÍÓÚÑÜ\\s]{2,100}";
 	public static final String FONO = "[9]{1}\\d{8}";
+	public static final String ANHO = "[0-9]{4}";
 }
