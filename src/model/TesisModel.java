@@ -27,7 +27,7 @@ public class TesisModel {
 			pstm.setInt(5, obj.getEstado());
 			pstm.setInt(6, obj.getAlumno().getIdAlumno());
 			
-			log.info(">>> " + pstm);
+			log.info(">>>> " + pstm);
 			
 			salida = pstm.executeUpdate();
 			

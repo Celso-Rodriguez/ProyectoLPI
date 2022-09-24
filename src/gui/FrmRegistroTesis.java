@@ -114,7 +114,7 @@ public class FrmRegistroTesis extends JInternalFrame implements ActionListener {
 		int posAlumno = cboalumno.getSelectedIndex();
 		
 		if(!tit.matches(Validaciones.TEXTO)) {
-			mensaje ("El título es de 2 a 20 caracteres");
+			mensaje ("El título es de 2 a 20 caracteres ");
 		}else if (!tem.matches(Validaciones.TEXTO)) {
 			mensaje ("El tema es de 2 a 20 caracteres");
 		}else if (!fchc.matches(Validaciones.FECHA)) {
