@@ -18,14 +18,13 @@ public class TesisModel {
 		try {
 			conn = MySqlDBConexion.getConexion();
 			
-			String sql = "insert into tesis value(null,?,?,?,?,?,?,curtime(),?,?)";
+			String sql = "insert into tesis value(null,?,?,?,curtime(),?,?)";
 			pstm = conn.prepareStatement(sql);
 			pstm.setString(1, obj.getTitulo());
 			pstm.setString(2, obj.getTema());
 			pstm.setDate(3, obj.getFechaCreacion());
-			pstm.setDate(4, obj.getFechaRegistro());
-			pstm.setInt(5, obj.getEstado());
-			pstm.setInt(6, obj.getAlumno().getIdAlumno());
+			pstm.setInt(4, obj.getEstado());
+			pstm.setInt(5, obj.getAlumno().getIdAlumno());
 			
 			log.info(">>>> " + pstm);
 			

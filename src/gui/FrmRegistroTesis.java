@@ -132,7 +132,6 @@ public class FrmRegistroTesis extends JInternalFrame implements ActionListener {
 			objTesis.setTitulo(tit);
 			objTesis.setTema(tem);
 			objTesis.setFechaCreacion(Date.valueOf(fchc));
-			objTesis.setFechaRegistro(Date.valueOf("2022-04-04"));
 			objTesis.setEstado(1);
 			objTesis.setAlumno(objAlumno);
 			
