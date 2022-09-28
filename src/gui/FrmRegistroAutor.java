@@ -64,7 +64,7 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener {
 		lblFechaNacimiento.setBounds(89, 250, 280, 25);
 		getContentPane().add(lblFechaNacimiento);
 		
-		JLabel lblTelfono = new JLabel("Teléfono :");
+		JLabel lblTelfono = new JLabel("Tel\u00e9fono :");
 		lblTelfono.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblTelfono.setFont(new Font("Yu Gothic UI", Font.BOLD, 25));
 		lblTelfono.setBounds(89, 300, 280, 25);
@@ -136,7 +136,7 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener {
 		}else if(!fec.matches(Validaciones.FECHA)) {
 			mensaje("La fecha tiene formato YYY-MM-dd");
 		}else if(!tel.matches(Validaciones.FONO)) {
-			mensaje("El teléfono es de 9 dígitos y empieza en 9");
+			mensaje("El teléfono es de 9 d\u00edgitos y empieza en 9");
 		}else if(index == 0) {
 			mensaje("Seleccione un Grado");
 		}else {
@@ -156,7 +156,7 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener {
 			AutorModel model = new AutorModel();
 			int s = model.insertaAutor(objAutor);
 			if (s>0) {
-				mensaje("Se registró correctamente");
+				mensaje("Se registr\u00f3 correctamente");
 			}else {
 				mensaje("Error en el registro");
 			}

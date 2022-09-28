@@ -60,11 +60,11 @@ public class FrmRegistroProveedor extends JInternalFrame {
 		lblDni.setBounds(199, 167, 51, 14);
 		getContentPane().add(lblDni);
 		
-		JLabel lblDireccion = new JLabel("Direccion");
+		JLabel lblDireccion = new JLabel("Direcci\u00f3n");
 		lblDireccion.setBounds(199, 200, 77, 14);
 		getContentPane().add(lblDireccion);
 		
-		JLabel lblTelefono = new JLabel("Telefono");
+		JLabel lblTelefono = new JLabel("T\u00e9lefono");
 		lblTelefono.setBounds(199, 233, 51, 14);
 		getContentPane().add(lblTelefono);
 		
@@ -72,7 +72,7 @@ public class FrmRegistroProveedor extends JInternalFrame {
 		lblCorreo.setBounds(199, 266, 51, 14);
 		getContentPane().add(lblCorreo);
 		
-		JLabel lblPais = new JLabel("Pais");
+		JLabel lblPais = new JLabel("Pa\u00eds");
 		lblPais.setBounds(199, 299, 51, 14);
 		getContentPane().add(lblPais);
 		
@@ -138,13 +138,13 @@ public class FrmRegistroProveedor extends JInternalFrame {
 		}else if(!dni.matches(Validaciones.DNI)) {
 			mensaje ("El DNI es de 8 digitos");
 		}else if(!dir.matches(Validaciones.TEXTO_NUMERO)) {
-			mensaje ("La Direccion es de 2 a 20 caracteres");
+			mensaje ("La Direcci\u00f3n es de 2 a 20 caracteres");
 		}else if(!tel.matches(Validaciones.FONO)) {
-			mensaje ("El Telefono debe empezar con 9 ");
+			mensaje ("El Tel\u00e9fono debe empezar con 9 ");
 		}else if(!cor.matches(Validaciones.CORREO)) {
 			mensaje ("El Correo debe tener un '@' y '.'");
 		}else if(posPais == 0) {
-			mensaje("Seleccione un Pais");
+			mensaje("Seleccione un Pa\u00eds");
 		}else {
 			String pais = cboPais.getSelectedItem().toString();
 			String idPais = pais.split(":")[0];
