@@ -2,8 +2,13 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
+import entidad.Pais;
 import entidad.Proveedor;
 import util.MySqlDBConexion;
 
@@ -49,6 +54,117 @@ public class ProveedorModel {
 
 		}
 
+		return salida;
+	}
+	
+	public int actualizaProveedor(Proveedor a) {
+		int actualiza = -1;
+		Connection con = null;
+		PreparedStatement pstm = null;
+		try {
+			con = MySqlDBConexion.getConexion();
+			String sql = "update Proveedor set nombres=?, apellidos=?, Dni=?, direccion=?, telefono=?, correo=?, estado=?, idPais=? where idProveedor=?";
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, a.getNombres());
+			pstm.setString(2, a.getApellidos());
+			pstm.setString(3, a.getDni());
+			pstm.setString(4, a.getDireccion());
+			pstm.setString(5, a.getTelefono());
+			pstm.setString(6, a.getCorreo());
+			pstm.setInt(7, a.getEstado());
+			pstm.setInt(8, a.getPais().getIdPais());
+			pstm.setInt(9, a.getIdProveedor());
+			log.info(">>> " + pstm);
+			actualiza = pstm.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstm != null)
+					pstm.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return actualiza;
+	}
+	
+	public int eliminaProveedor(int idProveedor) {
+		int elimina = -1;
+		Connection con = null;
+		PreparedStatement pstm = null;
+
+		try {
+			con = MySqlDBConexion.getConexion();
+			String sql = "delete from proveedor where idProveedor=?";
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, idProveedor);
+			log.info(">>> " + pstm);
+			elimina = pstm.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstm != null)
+					pstm.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return elimina;
+	}
+	
+	public List<Proveedor> listaProveedor() {
+		ArrayList<Proveedor> salida = new ArrayList<Proveedor>();
+		Connection con = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null; 
+		try {
+			con = MySqlDBConexion.getConexion();
+			String sql =  "SELECT a.*, p.nombre FROM proveedor a\r\n inner join pais p on a.idPais = p.idPais";
+					
+			pstm = con.prepareStatement(sql);
+			log.info(">>> " + pstm);
+		
+			rs = pstm.executeQuery();
+
+			Proveedor 	a = null;
+			Pais 	p = null;
+			while (rs.next()) {
+				a = new Proveedor();
+				a.setIdProveedor(rs.getInt(1));
+				a.setNombres(rs.getString(2));
+				a.setApellidos(rs.getString(3));
+				a.setDni(rs.getString(4));
+				a.setDireccion(rs.getString(5));
+				a.setTelefono(rs.getString(6));
+				a.setCorreo(rs.getString(7));
+				a.setFechaRegistro(rs.getDate(8));
+				a.setEstado(rs.getInt(9));
+				
+				p = new Pais();
+				p.setIdPais(rs.getInt(10));
+				p.setNombre(rs.getString(11));
+				a.setPais(p);
+				salida.add(a);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstm != null)
+					pstm.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return salida;
 	}
 }
