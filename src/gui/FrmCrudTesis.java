@@ -232,6 +232,7 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 		busca();
 	}
 	
+	
 	public void lista() {
 		DefaultTableModel dt = (DefaultTableModel) table.getModel();
 		dt.setRowCount(0);
