@@ -170,6 +170,7 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 	public void mouseClicked(MouseEvent e) {
 		if (e.getSource() == table) {
 			mouseClickedTableJTable(e);
+		
 		}
 	}
 	public void mousePressed(MouseEvent e) {
@@ -200,7 +201,6 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 			Object[] f = {x.getIdTesis(), x.getTitulo(), x.getTema(), x.getFechaCreacion(), x.getFechaRegistro(), x.getEstado(), x.getAlumno()};
 			dt.addRow(f);
 			}
-			
 		}
 	
 	void mensaje(String m) {

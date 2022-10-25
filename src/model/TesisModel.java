@@ -147,7 +147,6 @@ public class TesisModel {
 			}
 
 			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -162,6 +161,5 @@ public class TesisModel {
 		}
 		return salida;
 	}
-	
 	
 }
