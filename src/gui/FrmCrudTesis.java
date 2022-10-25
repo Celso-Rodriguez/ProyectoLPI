@@ -19,11 +19,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import entidad.Alumno;
+import entidad.Pais;
 import entidad.Tesis;
+import model.AlumnoModel;
 import model.TesisModel;
 import util.JComboBoxBD;
 import util.Validaciones;
@@ -34,17 +38,19 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txttitulo;
-	private JTextField txttema;
+	private JTextField txttem;
 	private JTextField txtfeccre;
-	private JButton btnIngresar;
-	private JLabel lblalumno;
-	private JComboBoxBD cboalumno;
-	private JButton btnEliminar;
-	private JTable table;
-	private JButton btnActualizar;
+	private JComboBoxBD cboAlumno;
 	private JCheckBox chkEstado;
+
+	private JButton btnIngresar;
+	private JButton btnEliminar;
+	private JButton btnActualizar;
 	
-	int idSeleccionado = -1;
+	
+	// Es el id de la fila seleccionado
+		int idSeleccionado = -1;
+		private JTable table;
 
 	public FrmCrudTesis() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -52,101 +58,144 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("Mantenimiento de Tesis");
-		setBounds(100, 100, 1000, 671);
+		setBounds(100, 100, 949, 607);
 		getContentPane().setLayout(null);
 		
-		JLabel lblTitulo = new JLabel("Mantenimiento de Tesis");
-		lblTitulo.setBounds(10, 11, 964, 59);
-		lblTitulo.setForeground(Color.DARK_GRAY);
-		lblTitulo.setBackground(Color.WHITE);
-		lblTitulo.setFont(new Font("Yu Gothic Medium", Font.ITALIC, 30));
-		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		getContentPane().add(lblTitulo);
+		JLabel lblMantenimientoDeTesis = new JLabel("Mantenimiento de Tesis");
+		lblMantenimientoDeTesis.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMantenimientoDeTesis.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblMantenimientoDeTesis.setBounds(10, 11, 906, 38);
+		getContentPane().add(lblMantenimientoDeTesis);
 		
-		JLabel lbltitulo = new JLabel("T\u00EDtulo");
-		lbltitulo.setBounds(10, 99, 104, 14);
-		getContentPane().add(lbltitulo);
+		JLabel lbltit = new JLabel("T\u00EDtulo");
+		lbltit.setFont(new Font("Arial Narrow", Font.BOLD, 15));
+		lbltit.setBounds(32, 80, 78, 25);
+		getContentPane().add(lbltit);
 		
-		JLabel lbltema = new JLabel("Tema");
-		lbltema.setBounds(10, 141, 104, 14);
-		getContentPane().add(lbltema);
+		JLabel lbltem = new JLabel("Tema");
+		lbltem.setFont(new Font("Arial Narrow", Font.BOLD, 15));
+		lbltem.setBounds(32, 120, 78, 25);
+		getContentPane().add(lbltem);
 		
-		JLabel lblfechacre = new JLabel("Fecha creaci\u00F3n");
-		lblfechacre.setBounds(10, 183, 104, 14);
-		getContentPane().add(lblfechacre);
+		JLabel lblfeccre = new JLabel("Fecha de Creaci\u00F3n");
+		lblfeccre.setFont(new Font("Arial Narrow", Font.BOLD, 15));
+		lblfeccre.setBounds(439, 80, 147, 25);
+		getContentPane().add(lblfeccre);
 		
 		txttitulo = new JTextField();
-		txttitulo.setBounds(137, 96, 254, 20);
+		txttitulo.setBounds(120, 83, 241, 20);
 		getContentPane().add(txttitulo);
 		txttitulo.setColumns(10);
 		
-		txttema = new JTextField();
-		txttema.setBounds(137, 138, 254, 20);
-		getContentPane().add(txttema);
-		txttema.setColumns(10);
-		
-		txtfeccre = new JTextField();
-		txtfeccre.setBounds(137, 180, 254, 20);
-		getContentPane().add(txtfeccre);
-		txtfeccre.setColumns(10);
-		
-		JCheckBox chkestado = new JCheckBox("Activo");
-		chkestado.setBounds(529, 137, 97, 23);
-		getContentPane().add(chkestado);
-		
-		lblalumno = new JLabel("Alumno");
-		lblalumno.setBounds(529, 99, 46, 14);
-		getContentPane().add(lblalumno);
-		
-		cboalumno = new JComboBoxBD(rb.getString("SQL_Alumno"));
-		cboalumno.setBounds(637, 95, 221, 22);
-		getContentPane().add(cboalumno);
+		txttem = new JTextField();
+		txttem.setColumns(10);
+		txttem.setBounds(120, 123, 241, 20);
+		getContentPane().add(txttem);
 		
 		btnIngresar = new JButton("Ingresar");
-		btnIngresar.setBounds(108, 221, 182, 35);
 		btnIngresar.addActionListener(this);
+		btnIngresar.setBounds(89, 223, 146, 30);
 		getContentPane().add(btnIngresar);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(399, 221, 176, 35);
 		btnEliminar.addActionListener(this);
+		btnEliminar.setBounds(358, 223, 146, 30);
 		getContentPane().add(btnEliminar);
 		
 		btnActualizar = new JButton("Actualizar");
-		btnActualizar.setBounds(691, 221, 167, 35);
 		btnActualizar.addActionListener(this);
+		btnActualizar.setBounds(693, 223, 146, 30);
 		getContentPane().add(btnActualizar);
 		
+		txtfeccre = new JTextField();
+		txtfeccre.setColumns(10);
+		txtfeccre.setBounds(579, 83, 191, 20);
+		getContentPane().add(txtfeccre);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 278, 964, 352);
+		scrollPane.setBounds(10, 277, 906, 289);
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
+		table.addMouseListener(this);
+		table.setFont(new Font("Arial Narrow", Font.PLAIN, 15));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Codigo", "T\u00EDtulo", "Tema", "Fecha Creaci\u00F3n", "Estado", "Alumno"
+				"Codigo", "T\u00EDtulo", "Tema", "Fecha Creaci\u00F3n", "fecha registro", "estado", "alumno"
 			}
+			
 		));
+		
 		table.getColumnModel().getColumn(0).setPreferredWidth(8);
 		table.getColumnModel().getColumn(1).setPreferredWidth(70);
 		table.getColumnModel().getColumn(2).setPreferredWidth(70);
 		table.getColumnModel().getColumn(3).setPreferredWidth(50);
 		table.getColumnModel().getColumn(4).setPreferredWidth(50);
-		table.getColumnModel().getColumn(5).setPreferredWidth(60);
+		table.getColumnModel().getColumn(5).setPreferredWidth(110);
 		table.getColumnModel().getColumn(6).setPreferredWidth(80);
-		scrollPane.setColumnHeaderView(table);
-
+		scrollPane.setViewportView(table);
+		
+		JLabel lblalumno = new JLabel("Alumno");
+		lblalumno.setFont(new Font("Arial Narrow", Font.BOLD, 15));
+		lblalumno.setBounds(439, 120, 78, 25);
+		getContentPane().add(lblalumno);
+		
+		cboAlumno = new JComboBoxBD(rb.getString("SQL_ALUMNO1"));
+		cboAlumno.setBounds(579, 122, 206, 22);
+		getContentPane().add(cboAlumno);
+		
+		chkEstado = new JCheckBox("Activo");
+		chkEstado.setBounds(579, 158, 97, 23);
+		getContentPane().add(chkEstado);
+		
+		table.setSelectionBackground(Color.BLACK);
+		
+		//alineacion
+		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+		rightRenderer.setHorizontalAlignment(JLabel.CENTER);
+		table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
+				
+		table.getTableHeader().setResizingAllowed(false);
+		
+		table.getTableHeader().setReorderingAllowed(false);
+				
+		table.setRowSelectionAllowed(true);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		table.setDefaultEditor(Object.class, null);
+		scrollPane.setViewportView(table);
+		
+		JLabel lblestado = new JLabel("Estado");
+		lblestado.setFont(new Font("Arial Narrow", Font.BOLD, 15));
+		lblestado.setBounds(439, 162, 46, 14);
+		getContentPane().add(lblestado);
+		
+		lista();
 	}
 	
-	
-	
+	void mensaje(String m) {
+		JOptionPane.showMessageDialog(this, m);
+	}
+
+	void limpiarCajasTexto() {
+		
+		txttitulo.setText("");
+		txttem.setText("");
+		txtfeccre.setText("");
+		cboAlumno.setSelectedIndex(0);
+		chkEstado.setSelected(false);
+		txttitulo.requestFocus();
+	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnActualizar) {
-			do_btnActualizar_actionPerformed(e);
-		}
 		if (e.getSource() == btnActualizar) {
 			actionPerformedBtnActualizarJButton(e);
 		}
@@ -166,29 +215,22 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 	protected void actionPerformedBtnActualizarJButton(ActionEvent e) {
 		actualiza();
 	}
-	
 	public void mouseClicked(MouseEvent e) {
 		if (e.getSource() == table) {
 			mouseClickedTableJTable(e);
-		
 		}
-	}
-	public void mousePressed(MouseEvent e) {
-	}
-	public void mouseReleased(MouseEvent e) {
 	}
 	public void mouseEntered(MouseEvent e) {
 	}
 	public void mouseExited(MouseEvent e) {
 	}
+	public void mousePressed(MouseEvent e) {
+	}
+	public void mouseReleased(MouseEvent e) {
+	}
 	protected void mouseClickedTableJTable(MouseEvent e) {
 		busca();
 	}
-	protected void do_btnEliminar_actionPerformed(ActionEvent e) {
-	}
-	protected void do_btnActualizar_actionPerformed(ActionEvent e) {
-	}
-	
 	
 	public void lista() {
 		DefaultTableModel dt = (DefaultTableModel) table.getModel();
@@ -203,63 +245,55 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 			}
 		}
 	
-	void mensaje(String m) {
-		JOptionPane.showMessageDialog(this, m);
-	}
-	void limpiarCajasTexto() {
+	//Agregando nombre al Estado que es Bool
+		public String getDesEstado(int x) {
+			if(x ==0) 	return "Inactivo";
+			else		return "Activo";
+		}
 		
-		txttitulo.setText("");
-		txttema.setText("");
-		txtfeccre.setText("");
-		cboalumno.setSelectedIndex(0);
-		chkEstado.setSelected(false);
-		txttitulo.requestFocus();
-	}
-	
-	public void ingresa() {
-		String tit = txttitulo.getText().trim();
-		String tem = txttema.getText().trim();
-		String feccre = txtfeccre.getText().trim();
-		int posAlumno = cboalumno.getSelectedIndex();
-		boolean est = chkEstado.isSelected();
-		if (!tit.matches(Validaciones.TEXTO)) {
-			mensaje("El Nombre es de 2 a 20 caracteres");
-		}else if (!tem.matches(Validaciones.TEXTO)) {
-			mensaje("El Apellido es de 2 a 20 caracteres");
-		}else if (!feccre.matches(Validaciones.FONO)) {
-			mensaje("El Telefono debe empezar con '9'");
-		}else if (posAlumno == 0) {
-			mensaje("Selecciona un Alumno");
-		}else {
-			String Alumno = cboalumno.getSelectedItem().toString();
-			String idAlumno = Alumno.split(":")[0];
-			
-			Alumno objPais = new Alumno();
-			objPais.setIdAlumno(Integer.parseInt(idAlumno));
-			
-			Tesis objTesis= new Tesis();
-			objTesis.setTitulo(tit);
-			objTesis.setTema(tem);
-			objTesis.setFechaCreacion(Date.valueOf(feccre));
-			objTesis.setAlumno(objPais);
-			if(est)
-				objTesis.setEstado(1);
-			else 
-				objTesis.setEstado(0);
-			TesisModel model = new TesisModel();
-			int salida = model.insertaTesis(objTesis);
-			if (salida > 0) {
-				mensaje("Se insertó correctamente");
-				lista();
-				limpiarCajasTexto();
+		public void ingresa() {
+			String tit = txttitulo.getText().trim();
+			String tem = txttem.getText().trim();
+			String feccre = txtfeccre.getText().trim();
+			int posAlumno = cboAlumno.getSelectedIndex();
+			boolean est = chkEstado.isSelected();
+			if (!tit.matches(Validaciones.TEXTO)) {
+				mensaje("El titulo es de 2 a 20 caracteres");
+			}else if (!tem.matches(Validaciones.TEXTO)) {
+				mensaje("El tema es de 2 a 20 caracteres");
+			}else if (!feccre.matches(Validaciones.FECHA)) {
+				mensaje("la fecha tiene formato YYYY-MM-dd");
+			}else if (posAlumno == 0) {
+				mensaje("Selecciona un Alumno");
 			}else {
-				mensaje("Error en el Registro");
+				String Alumno = cboAlumno.getSelectedItem().toString();
+				String idAlumno = Alumno.split(":")[0];
+				
+				Alumno objPais = new Alumno();
+				objPais.setIdAlumno(Integer.parseInt(idAlumno));
+				
+				Tesis objTesis= new Tesis();
+				objTesis.setTitulo(tit);
+				objTesis.setTema(tem);
+				objTesis.setFechaCreacion(Date.valueOf(feccre));
+				objTesis.setAlumno(objPais);
+				if(est)
+					objTesis.setEstado(1);
+				else 
+					objTesis.setEstado(0);
+				TesisModel model = new TesisModel();
+				int salida = model.insertaTesis(objTesis);
+				if (salida > 0) {
+					mensaje("Se insertó correctamente");
+					lista();
+					limpiarCajasTexto();
+				}else {
+					mensaje("Error en el Registro");
+				}
+				
 			}
 			
 		}
-		
-	}
-	
 	public void busca() {
 		//OBTIENE LA FILA SELECCIONADA
 		int fila = table.getSelectedRow();
@@ -282,50 +316,51 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 	
 		
 		txttitulo.setText(titulo);
-		txttema.setText(tema);
+		txttem.setText(tema);
 		txtfeccre.setText(String.valueOf(fechaCreacion));
 		chkEstado.setSelected(getBooleanEstado(estado));
-		cboalumno.setSelectedItem(idAlumno + ": " + nomAlumno);
+		cboAlumno.setSelectedItem(idAlumno + ": " + nomAlumno);
 
 	}
-public void actualiza() {
-		String tit = txttitulo.getText().trim();
-		String tem = txttema.getText().trim();
-		String feccre = txtfeccre.getText().trim();
-		int posAlumno = cboalumno.getSelectedIndex();
+	public void actualiza() {
+		
+		String nom = txttitulo.getText().trim();
+		String ape = txttem.getText().trim();
+		String fec = txtfeccre.getText().trim();
+		int posPais = cboAlumno.getSelectedIndex();
 		boolean est = chkEstado.isSelected();
 		
 		if(idSeleccionado == -1) {
 			mensaje("Seleccione una Fila");
-		}else if (!tit.matches(Validaciones.TEXTO)) {
-			mensaje("El titulo es de 2 a 20 caracteres");
-		}else if (!tem.matches(Validaciones.TEXTO)) {
-			mensaje("El tema es de 2 a 20 caracteres");
-		}else if (!feccre.matches(Validaciones.FECHA)) {
+		}else if (!nom.matches(Validaciones.TEXTO)) {
+			mensaje("El Nombre es de 2 a 20 caracteres");
+		}else if (!ape.matches(Validaciones.TEXTO)) {
+			mensaje("El Correo debe contener '@' y '.'");
+		}else if (!fec.matches(Validaciones.FECHA)) {
 			mensaje("la fecha tiene formato YYYY-MM-dd");
-		}else if (posAlumno == 0) {
+		}else if (posPais == 0) {
 			mensaje("Selecciona un País");
 		}else {
-			String alumno = cboalumno.getSelectedItem().toString();
-			String idalumno = alumno.split(":")[0];
+			String pais = cboAlumno.getSelectedItem().toString();
+			String idPais = pais.split(":")[0];
 			
-			Alumno objalumno = new Alumno();
-			objalumno.setIdAlumno(Integer.parseInt(idalumno));
+			Pais objPais = new Pais();
+			objPais.setIdPais(Integer.parseInt(idPais));
 			
-			Tesis objtesis= new Tesis();
-			objtesis.setIdTesis(idSeleccionado);
-			objtesis.setTitulo(tit);
-			objtesis.setTema(tem);
-			objtesis.setFechaCreacion(Date.valueOf(feccre));
-			objtesis.setAlumno(objalumno);
+			Alumno objAlum= new Alumno();
+			objAlum.setIdAlumno(idSeleccionado);
+			objAlum.setNombres(nom);
+			objAlum.setApellidos(ape);
+			objAlum.setFechaNacimiento(Date.valueOf(fec));
+			objAlum.setPais(objPais);
 			if(est)
-				objtesis.setEstado(1);
+				objAlum.setEstado(1);
 			else 
-				objtesis.setEstado(0);
+				objAlum.setEstado(0);
 		
 			
-			TesisModel model = new TesisModel();
-			int salida = model.actualizaTesis(objtesis);
+			AlumnoModel model = new AlumnoModel();
+			int salida = model.actualizaAlumno(objAlum);
 			if (salida > 0) {
 				lista();
 				idSeleccionado = -1;
@@ -335,7 +370,9 @@ public void actualiza() {
 			}else {
 				mensaje("Error al actualizar");
 			}
+			
 		}
+		
 	}
 public void elimina() {
 		
@@ -360,8 +397,4 @@ public void elimina() {
 	private boolean getBooleanEstado(String estado) {
 		return estado == "Activo"? true:false;
 	}
-	
-	
-	
-	
 }
