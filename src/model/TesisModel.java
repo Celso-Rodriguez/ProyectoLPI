@@ -85,6 +85,7 @@ public class TesisModel {
 		return actualizados;
 	}
 
+	
 	public int eliminaTesis(int idAlumno) {
 		int eliminados = -1;
 		Connection con = null;

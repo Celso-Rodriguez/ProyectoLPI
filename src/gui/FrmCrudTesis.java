@@ -1,41 +1,32 @@
 package gui;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Date;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import entidad.Alumno;
-import entidad.Pais;
 import entidad.Tesis;
-import model.AlumnoModel;
 import model.TesisModel;
 import util.JComboBoxBD;
-import util.MySqlDBConexion;
 import util.Validaciones;
-
-import javax.swing.ListSelectionModel;
-import javax.swing.ScrollPaneConstants;
 
 public class FrmCrudTesis extends JInternalFrame implements ActionListener, MouseListener {
 	
@@ -143,12 +134,14 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 		table.getColumnModel().getColumn(2).setPreferredWidth(70);
 		table.getColumnModel().getColumn(3).setPreferredWidth(50);
 		table.getColumnModel().getColumn(4).setPreferredWidth(50);
-		table.getColumnModel().getColumn(5).setPreferredWidth(110);
+		table.getColumnModel().getColumn(5).setPreferredWidth(60);
 		table.getColumnModel().getColumn(6).setPreferredWidth(80);
 		scrollPane.setColumnHeaderView(table);
 
 		
 	}
+	
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnActualizar) {
 			do_btnActualizar_actionPerformed(e);
