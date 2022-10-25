@@ -147,6 +147,7 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 		table.getColumnModel().getColumn(6).setPreferredWidth(80);
 		scrollPane.setColumnHeaderView(table);
 
+		
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnActualizar) {
