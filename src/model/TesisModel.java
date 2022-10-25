@@ -86,7 +86,7 @@ public class TesisModel {
 	}
 
 	
-	public int eliminaTesis(int idAlumno) {
+	public int eliminaTesis(int idTesis) {
 		int eliminados = -1;
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -95,7 +95,7 @@ public class TesisModel {
 			con = MySqlDBConexion.getConexion();
 			String sql = "delete from tesis where idTesis=?";
 			pstm = con.prepareStatement(sql);
-			pstm.setInt(1, idAlumno);
+			pstm.setInt(1, idTesis);
 			log.info(">>> " + pstm);
 			eliminados = pstm.executeUpdate();
 		} catch (Exception e) {
