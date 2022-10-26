@@ -119,7 +119,7 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 			new Object[][] {
 			},
 			new String[] {
-				"Codigo", "T\u00EDtulo", "Tema", "Fecha Creacion", "Fecha Registro", "Estado", "Alumno"
+				"Codigo", "T\u00EDtulo", "Tema", "Fecha Creacion", "Estado", "id Alumno","Alumno"
 			}
 		));
 		table.addMouseListener(this);
@@ -130,7 +130,7 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 		lblalumno.setBounds(439, 120, 78, 25);
 		getContentPane().add(lblalumno);
 		
-		cboAlumno = new JComboBoxBD(rb.getString("SQL_ALUMNO1"));
+		cboAlumno = new JComboBoxBD(rb.getString("SQL_ALUMNO"));
 		cboAlumno.setBounds(579, 122, 206, 22);
 		getContentPane().add(cboAlumno);
 		
@@ -207,7 +207,7 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 		List<Tesis> lista = model.listaTesis();
 		
 		for (Tesis x : lista) {
-			Object[] f = {x.getIdTesis(), x.getTitulo(), x.getTema(), x.getFechaCreacion(), getDesEstado(x.getEstado()), x.getAlumno().getIdAlumno()};
+			Object[] f = {x.getIdTesis(), x.getTitulo(), x.getTema(), x.getFechaCreacion(), getDesEstado(x.getEstado()), x.getAlumno().getIdAlumno(), x.getAlumno().getNombres()};
 			dt.addRow(f);
 			}
 		}
@@ -267,7 +267,7 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 		idSeleccionado = 	(Integer)table.getValueAt(fila, 0);
 		String titulo = 	(String)table.getValueAt(fila, 1);
 		String tema = 	(String)table.getValueAt(fila, 2);
-		String fechaCreacion = 	(String)table.getValueAt(fila, 3);
+		Date fechaCreacion = 	(Date)table.getValueAt(fila, 3);
 		String estado =  	(String)table.getValueAt(fila, 4);
 		Integer idAlumno = 	(Integer)table.getValueAt(fila, 5);
 		String nomAlumno = 	(String)table.getValueAt(fila, 6);

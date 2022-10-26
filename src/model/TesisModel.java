@@ -120,7 +120,7 @@ public class TesisModel {
 		ResultSet rs = null; 
 		try {
 			con = MySqlDBConexion.getConexion();
-			String sql = "SELECT t.*, a.nombres FROM Tesis t inner join alumno a on t.idAlumno = a.idAlumno";
+			String sql = "SELECT t.*, a.nombres, a.apellidos FROM Tesis t inner join alumno a on t.idAlumno = a.idAlumno";
 			pstm = con.prepareStatement(sql);
 			log.info(">>> " + pstm);
 
@@ -140,6 +140,7 @@ public class TesisModel {
 				
 				p = new Alumno();
 				p.setIdAlumno(rs.getInt(7));
+				p.setNombres(rs.getString(8)+" "+ rs.getString(9));
 				a.setAlumno(p);
 				salida.add(a);
 			}

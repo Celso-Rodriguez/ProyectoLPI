@@ -83,7 +83,7 @@ public class FrmCrudAutor extends JInternalFrame implements ActionListener, Mous
 		lblFecNac.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		getContentPane().add(lblFecNac);
 		
-		JLabel lblTelefono = new JLabel("Teléfono :");
+		JLabel lblTelefono = new JLabel("Tel\u00e9fono :");
 		lblTelefono.setBounds(420, 108, 100, 25);
 		lblTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelefono.setFont(new Font("Tahoma", Font.PLAIN, 18));
