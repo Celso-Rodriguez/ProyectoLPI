@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -117,24 +115,14 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
-		table.addMouseListener(this);
-		table.setFont(new Font("Arial Narrow", Font.PLAIN, 15));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Codigo", "T\u00EDtulo", "Tema", "Fecha Creaci\u00F3n", "fecha registro", "estado", "alumno"
+				"Codigo", "T\u00EDtulo", "Tema", "Fecha Creacion", "Fecha Registro", "Estado", "Alumno"
 			}
-			
 		));
-		
-		table.getColumnModel().getColumn(0).setPreferredWidth(8);
-		table.getColumnModel().getColumn(1).setPreferredWidth(70);
-		table.getColumnModel().getColumn(2).setPreferredWidth(70);
-		table.getColumnModel().getColumn(3).setPreferredWidth(50);
-		table.getColumnModel().getColumn(4).setPreferredWidth(50);
-		table.getColumnModel().getColumn(5).setPreferredWidth(110);
-		table.getColumnModel().getColumn(6).setPreferredWidth(80);
+		table.addMouseListener(this);
 		scrollPane.setViewportView(table);
 		
 		JLabel lblalumno = new JLabel("Alumno");
@@ -150,28 +138,9 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 		chkEstado.setBounds(579, 158, 97, 23);
 		getContentPane().add(chkEstado);
 		
-		table.setSelectionBackground(Color.BLACK);
-		
 		//alineacion
 		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
 		rightRenderer.setHorizontalAlignment(JLabel.CENTER);
-		table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
-		table.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);
-		table.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
-		table.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
-		table.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
-		table.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
-		table.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
-				
-		table.getTableHeader().setResizingAllowed(false);
-		
-		table.getTableHeader().setReorderingAllowed(false);
-				
-		table.setRowSelectionAllowed(true);
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
-		table.setDefaultEditor(Object.class, null);
-		scrollPane.setViewportView(table);
 		
 		JLabel lblestado = new JLabel("Estado");
 		lblestado.setFont(new Font("Arial Narrow", Font.BOLD, 15));
@@ -217,7 +186,7 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 	}
 	public void mouseClicked(MouseEvent e) {
 		if (e.getSource() == table) {
-			mouseClickedTableJTable(e);
+			do_table_mouseClicked(e);
 		}
 	}
 	public void mouseEntered(MouseEvent e) {
@@ -228,25 +197,21 @@ public class FrmCrudTesis extends JInternalFrame implements ActionListener, Mous
 	}
 	public void mouseReleased(MouseEvent e) {
 	}
-	protected void mouseClickedTableJTable(MouseEvent e) {
-		busca();
-	}
 	
 	
 	public void lista() {
-		DefaultTableModel dt = (DefaultTableModel) table.getModel();
+		 DefaultTableModel dt = (DefaultTableModel) table.getModel();
 		dt.setRowCount(0);
 		
 		TesisModel model = new TesisModel();
 		List<Tesis> lista = model.listaTesis();
 		
 		for (Tesis x : lista) {
-			Object[] f = {x.getIdTesis(), x.getTitulo(), x.getTema(), x.getFechaCreacion(), x.getFechaRegistro(), x.getEstado(), x.getAlumno()};
+			Object[] f = {x.getIdTesis(), x.getTitulo(), x.getTema(), x.getFechaCreacion(), getDesEstado(x.getEstado()), x.getAlumno().getIdAlumno()};
 			dt.addRow(f);
 			}
 		}
 	
-	//Agregando nombre al Estado que es Bool
 		public String getDesEstado(int x) {
 			if(x ==0) 	return "Inactivo";
 			else		return "Activo";
@@ -397,5 +362,8 @@ public void elimina() {
 	
 	private boolean getBooleanEstado(String estado) {
 		return estado == "Activo"? true:false;
+	}
+	protected void do_table_mouseClicked(MouseEvent e) {
+		busca();
 	}
 }
