@@ -125,32 +125,32 @@ public class ProveedorModel {
 		ResultSet rs = null; 
 		try {
 			con = MySqlDBConexion.getConexion();
-			String sql =  "SELECT a.*, p.nombre FROM proveedor a\r\n inner join pais p on a.idPais = p.idPais";
-					
+			String sql =  "SELECT pr.*, p.nombre FROM proveedor pr inner join pais p on pr.idPais = p.idPais";
+			//SELECT a.*, p.nombre FROM proveedor a\r\n inner join pais p on a.idPais = p.idPais
 			pstm = con.prepareStatement(sql);
 			log.info(">>> " + pstm);
 		
 			rs = pstm.executeQuery();
 
-			Proveedor 	a = null;
-			Pais 	p = null;
+			Proveedor objProveedor = null;
+			Pais objPais = null;
 			while (rs.next()) {
-				a = new Proveedor();
-				a.setIdProveedor(rs.getInt(1));
-				a.setNombres(rs.getString(2));
-				a.setApellidos(rs.getString(3));
-				a.setDni(rs.getString(4));
-				a.setDireccion(rs.getString(5));
-				a.setTelefono(rs.getString(6));
-				a.setCorreo(rs.getString(7));
-				a.setFechaRegistro(rs.getDate(8));
-				a.setEstado(rs.getInt(9));
+				objProveedor = new Proveedor();
+				objProveedor.setIdProveedor(rs.getInt(1));
+				objProveedor.setNombres(rs.getString(2));
+				objProveedor.setApellidos(rs.getString(3));
+				objProveedor.setDni(rs.getString(4));
+				objProveedor.setDireccion(rs.getString(5));
+				objProveedor.setTelefono(rs.getString(6));
+				objProveedor.setCorreo(rs.getString(7));
+				objProveedor.setFechaRegistro(rs.getDate(8));
+				objProveedor.setEstado(rs.getInt(9));
 				
-				p = new Pais();
-				p.setIdPais(rs.getInt(10));
-				p.setNombre(rs.getString(11));
-				a.setPais(p);
-				salida.add(a);
+				objPais = new Pais();
+				objPais.setIdPais(rs.getInt(10));
+				objPais.setNombre(rs.getString(11));
+				objProveedor.setPais(objPais);
+				salida.add(objProveedor);
 			}
 
 		} catch (Exception e) {
@@ -164,6 +164,61 @@ public class ProveedorModel {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+		return salida;
+	}
+	
+	public List<Proveedor> listaPorPais(int idPais){
+		ArrayList<Proveedor> salida = new ArrayList<Proveedor>();
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		try {
+			//1 Se crea la conexion
+			conn = MySqlDBConexion.getConexion();
+			
+			//2 Se prepara el SQL
+			String sql = "SELECT c.*, p.nombre FROM Proveedor c inner join pais p on c.idPais = p.idPais where c.idPais = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, idPais);
+			
+			//String sql = "call sp_Proveedor_list()";
+			//psmt = conn.prepareStatement(sql);
+			
+			log.info(">>> " + psmt);
+			
+			//3 Se ejecuta el SQL en la base de datos
+			rs = psmt.executeQuery();
+			Proveedor objProveedor = null;
+			Pais objPais = null;
+			while(rs.next()) {
+				objProveedor = new Proveedor();
+				objProveedor.setIdProveedor(rs.getInt(1));
+				objProveedor.setNombres(rs.getString(2));
+				objProveedor.setApellidos(rs.getString(3));
+				objProveedor.setDni(rs.getString(4));
+				objProveedor.setDireccion(rs.getString(5));
+				objProveedor.setTelefono(rs.getString(6));
+				objProveedor.setCorreo(rs.getString(7));
+				objProveedor.setFechaRegistro(rs.getDate(8));
+				objProveedor.setEstado(rs.getInt(9));
+				
+				objPais = new Pais();
+				objPais.setIdPais(rs.getInt(10));
+				objPais.setNombre(rs.getString(11));
+				objProveedor.setPais(objPais);
+				salida.add(objProveedor);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (psmt != null) psmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {}
 		}
 		return salida;
 	}

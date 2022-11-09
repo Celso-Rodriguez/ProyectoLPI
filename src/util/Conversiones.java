@@ -3,6 +3,8 @@ package util;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class Conversiones {
 
@@ -17,5 +19,10 @@ public class Conversiones {
 		return fec;
 	}
 	
+
+	public static String getFechaYYYYMMddHHmmss(java.sql.Date fecha) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //Brinda formato a la fecha
+		return sdf.format(fecha);
+	}
 	
 }
