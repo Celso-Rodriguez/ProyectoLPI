@@ -20,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
 
 import entidad.Proveedor;
 import model.ProveedorModel;
-import util.Conversiones;
 import util.JComboBoxBD;
 
 public class FrmConsultaProveedor extends JInternalFrame implements ItemListener {
@@ -146,7 +145,7 @@ public class FrmConsultaProveedor extends JInternalFrame implements ItemListener
 							  x.getDireccion(),
 							  x.getTelefono(),
 							  x.getCorreo(),
-							  Conversiones.getFechaYYYYMMddHHmmss(x.getFechaRegistro()),
+							  x.getFechaRegistro(),
 							  x.getEstado()==1?"Activo":"Inactivo",
 							  x.getPais().getNombre()} ;
 				dtm.addRow(f);

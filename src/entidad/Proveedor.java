@@ -1,6 +1,6 @@
 package entidad;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Proveedor {
 	
@@ -11,7 +11,7 @@ public class Proveedor {
 	public String direccion;
 	public String telefono;
 	public String correo;
-	public Date fechaRegistro;
+	public Timestamp fechaRegistro;
 	private int estado;
 	private Pais pais;
 	
@@ -58,10 +58,10 @@ public class Proveedor {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public Date getFechaRegistro() {
+	public Timestamp getFechaRegistro() {
 		return fechaRegistro;
 	}
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(Timestamp fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 	public int getEstado() {

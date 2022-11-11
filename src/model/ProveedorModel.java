@@ -143,7 +143,7 @@ public class ProveedorModel {
 				objProveedor.setDireccion(rs.getString(5));
 				objProveedor.setTelefono(rs.getString(6));
 				objProveedor.setCorreo(rs.getString(7));
-				objProveedor.setFechaRegistro(rs.getDate(8));
+				objProveedor.setFechaRegistro(rs.getTimestamp(8));
 				objProveedor.setEstado(rs.getInt(9));
 				
 				objPais = new Pais();
@@ -201,7 +201,7 @@ public class ProveedorModel {
 				objProveedor.setDireccion(rs.getString(5));
 				objProveedor.setTelefono(rs.getString(6));
 				objProveedor.setCorreo(rs.getString(7));
-				objProveedor.setFechaRegistro(rs.getDate(8));
+				objProveedor.setFechaRegistro(rs.getTimestamp(8));
 				objProveedor.setEstado(rs.getInt(9));
 				
 				objPais = new Pais();
