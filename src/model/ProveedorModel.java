@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -185,6 +186,60 @@ public class ProveedorModel {
 			
 			//String sql = "call sp_Proveedor_list()";
 			//psmt = conn.prepareStatement(sql);
+			
+			log.info(">>> " + psmt);
+			
+			//3 Se ejecuta el SQL en la base de datos
+			rs = psmt.executeQuery();
+			Proveedor objProveedor = null;
+			Pais objPais = null;
+			while(rs.next()) {
+				objProveedor = new Proveedor();
+				objProveedor.setIdProveedor(rs.getInt(1));
+				objProveedor.setNombres(rs.getString(2));
+				objProveedor.setApellidos(rs.getString(3));
+				objProveedor.setDni(rs.getString(4));
+				objProveedor.setDireccion(rs.getString(5));
+				objProveedor.setTelefono(rs.getString(6));
+				objProveedor.setCorreo(rs.getString(7));
+				objProveedor.setFechaRegistro(rs.getTimestamp(8));
+				objProveedor.setEstado(rs.getInt(9));
+				
+				objPais = new Pais();
+				objPais.setIdPais(rs.getInt(10));
+				objPais.setNombre(rs.getString(11));
+				objProveedor.setPais(objPais);
+				salida.add(objProveedor);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (psmt != null) psmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {}
+		}
+		return salida;
+	}
+	
+	
+	public List<Proveedor> listaPorFechaCreacion(Date fecIni, Date fecFin){
+		ArrayList<Proveedor> salida = new ArrayList<Proveedor>();
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		try {
+			//1 Se crea la conexion
+			conn = MySqlDBConexion.getConexion();
+			
+			//2 Se prepara el SQL
+			String sql = "SELECT c.*, p.nombre FROM Proveedor c inner join pais p on c.idPais = p.idPais where c.fechaRegistro between ? and ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setDate(1, fecIni);
+			psmt.setDate(2, fecFin);
 			
 			log.info(">>> " + psmt);
 			
