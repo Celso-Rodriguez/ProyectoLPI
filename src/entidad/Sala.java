@@ -1,6 +1,7 @@
 package entidad;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class Sala {
 	
@@ -12,6 +13,16 @@ public class Sala {
 	private Timestamp fechaRegistro;
 	private int estado;
 	private Sede sede;
+	
+	
+	public String getFormatoSede() {
+		return sede.getNombre();
+	}
+	public String getFormatoFechaRegistro() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(fechaRegistro);
+	}
+
 	
 	public int getIdSala() {
 		return idSala;
