@@ -1,6 +1,6 @@
 package entidad;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Sala {
 	
@@ -9,7 +9,7 @@ public class Sala {
 	private int piso;
 	private int numAlumnos;
 	private String recursos;
-	private Date fechaRegistro;
+	private Timestamp fechaRegistro;
 	private int estado;
 	private Sede sede;
 	
@@ -43,10 +43,10 @@ public class Sala {
 	public void setRecursos(String recursos) {
 		this.recursos = recursos;
 	}
-	public Date getFechaRegistro() {
+	public Timestamp getFechaRegistro() {
 		return fechaRegistro;
 	}
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(Timestamp fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 	public int getEstado() {

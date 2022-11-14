@@ -131,7 +131,7 @@ public class FrmConsultaSala extends JInternalFrame implements ItemListener {
 			
 			for (Sala x : lista) {
 				Object[] f = {x.getIdSala(), x.getNumero(), x.getPiso(), 
-							x.getNumAlumnos(), x.getRecursos(), FechaUtil.getFechaYYYYMMddHHmmss(x.getFechaRegistro()),
+							x.getNumAlumnos(), x.getRecursos(), x.getFechaRegistro(),
 							x.getEstado()==1?"Activo":"Inactivo", x.getSede().getNombre()};
 				dtm.addRow(f);
 			}

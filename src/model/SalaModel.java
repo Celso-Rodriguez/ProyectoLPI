@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import entidad.Sede;
 import entidad.Sala;
+import entidad.Sede;
 import util.MySqlDBConexion;
 
 public class SalaModel {
@@ -151,7 +152,7 @@ public class SalaModel {
 				objSala.setPiso(rs.getInt(3));
 				objSala.setNumAlumnos(rs.getInt(4));
 				objSala.setRecursos(rs.getString(5));
-				objSala.setFechaRegistro(rs.getDate(6));
+				objSala.setFechaRegistro(rs.getTimestamp(6));
 				objSala.setEstado(rs.getInt(7));
 				
 				objSede = new Sede();
@@ -186,7 +187,6 @@ public class SalaModel {
 			String sql = "SELECT sa.*, se.nombre FROM sala sa inner join sede se on sa.idSede = se.idSede where sa.idSede = ?";
 			pstm = con.prepareCall(sql);
 			pstm.setInt(1, idSede);
-			
 			log.info(">>> " + pstm);
 
 			// En rs se trae los datos de la BD segun el SQL
@@ -203,7 +203,7 @@ public class SalaModel {
 				objSala.setPiso(rs.getInt(3));
 				objSala.setNumAlumnos(rs.getInt(4));
 				objSala.setRecursos(rs.getString(5));
-				objSala.setFechaRegistro(rs.getDate(6));
+				objSala.setFechaRegistro(rs.getTimestamp(6));
 				objSala.setEstado(rs.getInt(7));
 				
 				objSede = new Sede();
