@@ -13,7 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -52,7 +54,7 @@ public class FrmConsultaSala extends JInternalFrame implements ItemListener {
 		
 		cboSede = new JComboBoxBD(rb.getString("SQL_SEDE"), "[Todos]");
 		cboSede.addItemListener(this);
-		cboSede.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		cboSede.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		cboSede.setBounds(170, 166, 251, 22);
 		getContentPane().add(cboSede);
 		
@@ -68,7 +70,34 @@ public class FrmConsultaSala extends JInternalFrame implements ItemListener {
 				"C\u00F3digo", "N\u00FAmero de Sala", "Piso", "N\u00FAmero de Alumnos", "Recursos", "Fecha de Registro", "Estado",  "Sede"
 			}
 		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(70);
+		table.getColumnModel().getColumn(1).setPreferredWidth(130);
+		table.getColumnModel().getColumn(2).setPreferredWidth(80);
+		table.getColumnModel().getColumn(3).setPreferredWidth(150);
+		table.getColumnModel().getColumn(4).setPreferredWidth(200);
+		table.getColumnModel().getColumn(5).setPreferredWidth(140);
+		table.getColumnModel().getColumn(6).setPreferredWidth(90);
+		table.getColumnModel().getColumn(7).setPreferredWidth(110);
 		scrollPane.setViewportView(table);
+		
+		table.getTableHeader().setReorderingAllowed(false);
+		
+		table.setRowSelectionAllowed(true);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+		rightRenderer.setHorizontalAlignment(JLabel.CENTER);
+		
+		table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+		table.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
+		
+		table.setDefaultEditor(Object.class, null);
+		
+		table.getTableHeader().setResizingAllowed(false);
 	}
 
 	public void mensaje(String ms) {
