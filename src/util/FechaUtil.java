@@ -6,6 +6,11 @@ import java.util.Date;
 
 public class FechaUtil {
 
+	public static String getFechaYYYYMMddHHmmss(java.sql.Date fecha) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //Brinda formato a la fecha
+		return sdf.format(fecha);
+	}
+	
 	public static String getFechaActualYYYYMMdd() {
 		Date fechaActual = new Date(); // Fecha Actual o fecha del sistema
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); //Brinda formato a la fecha
