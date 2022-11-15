@@ -82,7 +82,7 @@ public class LibroModel {
 				objLibro.setTitulo(rs.getString(2));
 				objLibro.setAnio(rs.getInt(3));
 				objLibro.setSerie(rs.getString(4));				
-				objLibro.setFechaRegistro(rs.getDate(5));
+				objLibro.setFechaRegistro(rs.getTimestamp(5));
 				objLibro.setEstado(rs.getInt(6));
 				
 				objCategoria = new Categoria();
@@ -182,6 +182,105 @@ public class LibroModel {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+		return salida;
+	}
+	
+	public List<Libro> listaPorCategoria(int idCategoria){
+		ArrayList<Libro> salida = new ArrayList<Libro>();
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		try {
+			//1 Se crea la conexion
+			conn = MySqlDBConexion.getConexion();
+			
+			//2 Se prepara el SQL
+			String sql = "SELECT l.*, cl.descripcion FROM libro l inner join categoria_libro cl on l.idCategoria = cl.idCategoria where cl.idCategoria = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, idCategoria);
+			
+			log.info(">>> " + psmt);
+			
+			//3 Se ejecuta el SQL en la base de datos
+			rs = psmt.executeQuery();
+			Libro objLibro = null;
+			Categoria objCategoria = null;
+			while(rs.next()) {
+				objLibro = new Libro();
+				objLibro.setIdLibro(rs.getInt(1));
+				objLibro.setTitulo(rs.getString(2));
+				objLibro.setAnio(rs.getInt(3));
+				objLibro.setSerie(rs.getString(4));
+				objLibro.setFechaRegistro(rs.getTimestamp(5));
+				objLibro.setEstado(rs.getInt(6));
+				
+				objCategoria = new Categoria();
+				objCategoria.setIdCategoria(rs.getInt(7));
+				objCategoria.setDescripcion(rs.getString(8));
+				objLibro.setCategoria(objCategoria);
+				salida.add(objLibro);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (psmt != null) psmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {}
+		}
+		return salida;
+	}
+	
+	public List<Libro> listaPorAnio(int fecIni, int fecFin){
+		ArrayList<Libro> salida = new ArrayList<Libro>();
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		try {
+			//1 Se crea la conexion
+			conn = MySqlDBConexion.getConexion();
+			
+			//2 Se prepara el SQL
+			String sql = "SELECT l.*, cl.descripcion FROM libro l inner join categoria_libro cl on l.idCategoria = cl.idCategoria where l.anio between ? and ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, fecIni);
+			psmt.setInt(2, fecFin);
+			
+			log.info(">>> " + psmt);
+			
+			//3 Se ejecuta el SQL en la base de datos
+			rs = psmt.executeQuery();
+			Libro objLibro = null;
+			Categoria objCategoria = null;
+			while(rs.next()) {
+				objLibro = new Libro();
+				objLibro.setIdLibro(rs.getInt(1));
+				objLibro.setTitulo(rs.getString(2));
+				objLibro.setAnio(rs.getInt(3));
+				objLibro.setSerie(rs.getString(4));
+				objLibro.setFechaRegistro(rs.getTimestamp(5));
+				objLibro.setEstado(rs.getInt(6));
+				
+				objCategoria = new Categoria();
+				objCategoria.setIdCategoria(rs.getInt(7));
+				objCategoria.setDescripcion(rs.getString(8));
+				objLibro.setCategoria(objCategoria);
+				salida.add(objLibro);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (psmt != null) psmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {}
 		}
 		return salida;
 	}

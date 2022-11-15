@@ -1,6 +1,6 @@
 package entidad;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Libro {
 	
@@ -8,11 +8,14 @@ public class Libro {
 	private String titulo;
 	private int anio;
 	private String serie;
-	private Date fechaRegistro;
+	private Timestamp fechaRegistro;
 	private int estado;
 	private Categoria categoria;
 	
-	
+	public String getFormatoCategoria() {
+		return categoria.getDescripcion();
+	}
+	//------------------------------------------
 	public int getIdLibro() {
 		return idLibro;
 	}
@@ -37,10 +40,10 @@ public class Libro {
 	public void setSerie(String serie) {
 		this.serie = serie;
 	}
-	public Date getFechaRegistro() {
+	public Timestamp getFechaRegistro() {
 		return fechaRegistro;
 	}
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(Timestamp fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 	public int getEstado() {

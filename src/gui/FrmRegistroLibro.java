@@ -41,58 +41,61 @@ public class FrmRegistroLibro extends JInternalFrame implements ActionListener {
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("REGISTRO DE LIBRO");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel.setBackground(Color.BLUE);
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 11, 864, 37);
+		lblNewLabel.setBounds(10, 11, 864, 80);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblTitulo = new JLabel("T\u00EDtulo");
 		lblTitulo.setForeground(Color.BLACK);
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTitulo.setBounds(155, 156, 46, 28);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTitulo.setBounds(48, 142, 46, 28);
 		getContentPane().add(lblTitulo);
 		
 		JLabel lblAnio = new JLabel("A\u00F1o");
 		lblAnio.setForeground(Color.BLACK);
-		lblAnio.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblAnio.setBounds(155, 195, 46, 29);
+		lblAnio.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblAnio.setBounds(48, 194, 46, 29);
 		getContentPane().add(lblAnio);
 		
 		JLabel lblSerie = new JLabel("Serie");
 		lblSerie.setForeground(Color.BLACK);
-		lblSerie.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSerie.setBounds(158, 235, 46, 32);
+		lblSerie.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblSerie.setBounds(48, 258, 46, 32);
 		getContentPane().add(lblSerie);
 		
 		JLabel lblCategoria = new JLabel("Categor\u00EDa");
 		lblCategoria.setForeground(Color.BLACK);
-		lblCategoria.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCategoria.setBounds(158, 278, 97, 31);
+		lblCategoria.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblCategoria.setBounds(48, 328, 97, 31);
 		getContentPane().add(lblCategoria);
 		
 		txtTitulo = new JTextField();
-		txtTitulo.setBounds(254, 162, 325, 20);
+		txtTitulo.setBounds(158, 149, 472, 20);
 		getContentPane().add(txtTitulo);
 		txtTitulo.setColumns(10);
 		
 		txtAnio = new JTextField();
-		txtAnio.setBounds(254, 201, 86, 20);
+		txtAnio.setBounds(158, 201, 127, 20);
 		getContentPane().add(txtAnio);
 		txtAnio.setColumns(10);
 		
 		txtSerie = new JTextField();
-		txtSerie.setBounds(254, 243, 179, 20);
+		txtSerie.setBounds(158, 267, 179, 20);
 		getContentPane().add(txtSerie);
 		txtSerie.setColumns(10);
 		
 		cboCategoria = new JComboBoxBD(rb.getString("SQL_CATEGORIA"));
-		cboCategoria.setBounds(254, 284, 179, 22);
+		cboCategoria.setBounds(158, 335, 355, 28);
 		getContentPane().add(cboCategoria);
 		
 		btnRegistrar = new JButton("REGISTRAR");
 		btnRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnRegistrar.addActionListener(this);
-		btnRegistrar.setBounds(425, 436, 154, 46);
+		btnRegistrar.setBounds(342, 450, 216, 80);
 		getContentPane().add(btnRegistrar);
 	}
 	public void actionPerformed(ActionEvent e) {
@@ -111,7 +114,7 @@ public class FrmRegistroLibro extends JInternalFrame implements ActionListener {
 		String ser  = txtSerie.getText().trim();														
 		int  index  = cboCategoria.getSelectedIndex();
 		
-		if(!tit.matches(Validaciones.TEXTO)){
+		if(!tit.matches(Validaciones.TEXTO_NUMERO)){
 			mensaje ("El titulo debe tener de 2 a 20 caracteres");
 		}else if (!anio.matches(Validaciones.ANNO)) {
 			mensaje ("El año debe tener 4 digitos");
