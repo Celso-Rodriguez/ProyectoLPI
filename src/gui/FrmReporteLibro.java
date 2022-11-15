@@ -85,7 +85,6 @@ public class FrmReporteLibro extends JInternalFrame implements ActionListener {
 		panelReporte.setBounds(25, 203, 1149, 356);
 		getContentPane().add(panelReporte);
 		panelReporte.setLayout(new BorderLayout(0, 0));
-
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnFiltrar) {
