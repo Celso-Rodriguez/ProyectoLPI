@@ -49,7 +49,7 @@ public class FrmReporteAlumno extends JInternalFrame implements ActionListener {
 		
 		panelReporte = new JPanel();
 		panelReporte.setBorder(new TitledBorder(null, "Reportes", TitledBorder.CENTER, TitledBorder.TOP, null, null));
-		panelReporte.setBounds(10, 205, 1164, 354);
+		panelReporte.setBounds(10, 205, 1451, 440);
 		getContentPane().add(panelReporte);
 		panelReporte.setLayout(new BorderLayout());
 		
