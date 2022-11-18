@@ -49,11 +49,7 @@ public class JComboBoxBD extends JComboBox<String> {
 			conn = MySqlDBConexion.getConexion();
 			pstm = conn.prepareStatement(sql);
 			rs = pstm.executeQuery();
-<<<<<<< HEAD
-			addItem("[Seleccione]");
-=======
 			addItem("[ Seleccione ]");
->>>>>>> branch 'master' of https://github.com/jorgejacinto9701/lp1_20222_mar_jue_grupo_01
 			addItem(texto);
 			while (rs.next()) {
 				addItem(rs.getString(1) + ": " + rs.getString(2));
