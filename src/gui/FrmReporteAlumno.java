@@ -37,13 +37,14 @@ public class FrmReporteAlumno extends JInternalFrame implements ActionListener {
 	private JPanel panelReporte;
 
 	public FrmReporteAlumno() {
+		
+		setMaximizable(true);
 		getContentPane().setForeground(SystemColor.activeCaption);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setMaximizable(true);
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("Reporte de alumno");
-		setBounds(100, 100, 1200, 600);
+		setBounds(100, 100, 1487, 686);
 		getContentPane().setLayout(null);
 		
 		panelReporte = new JPanel();
@@ -88,7 +89,7 @@ public class FrmReporteAlumno extends JInternalFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnFiltrarJButton(ActionEvent e) {
-		String fecIni  = txtFechaFin.getText().trim();
+		String fecIni  = txtFechaInicio.getText().trim();
 		String fecFin  = txtFechaFin.getText().trim();
 		
 		if (!fecIni.matches(Validaciones.FECHA)) {
