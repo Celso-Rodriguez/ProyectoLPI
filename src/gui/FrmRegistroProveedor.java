@@ -49,30 +49,37 @@ public class FrmRegistroProveedor extends JInternalFrame {
 		getContentPane().add(lblRegistroProveedor);
 		
 		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNombre.setBounds(199, 98, 51, 14);
 		getContentPane().add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("Apellido");
+		lblApellido.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblApellido.setBounds(199, 134, 51, 14);
 		getContentPane().add(lblApellido);
 		
 		JLabel lblDni = new JLabel("DNI");
+		lblDni.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDni.setBounds(199, 167, 51, 14);
 		getContentPane().add(lblDni);
 		
 		JLabel lblDireccion = new JLabel("Direcci\u00f3n");
+		lblDireccion.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDireccion.setBounds(199, 200, 77, 14);
 		getContentPane().add(lblDireccion);
 		
 		JLabel lblTelefono = new JLabel("T\u00e9lefono");
+		lblTelefono.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTelefono.setBounds(199, 233, 51, 14);
 		getContentPane().add(lblTelefono);
 		
 		JLabel lblCorreo = new JLabel("Correo");
+		lblCorreo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCorreo.setBounds(199, 266, 51, 14);
 		getContentPane().add(lblCorreo);
 		
 		JLabel lblPais = new JLabel("Pa\u00eds");
+		lblPais.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblPais.setBounds(199, 299, 51, 14);
 		getContentPane().add(lblPais);
 		

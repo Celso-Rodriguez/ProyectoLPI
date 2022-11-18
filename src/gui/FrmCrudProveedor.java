@@ -97,7 +97,7 @@ public class FrmCrudProveedor extends JInternalFrame implements MouseListener, A
 		lblDireccion.setBounds(469, 118, 71, 14);
 		getContentPane().add(lblDireccion);
 		
-		lblTelefono = new JLabel("T\u00e9lefono:");
+		lblTelefono = new JLabel("Tel\u00e9fono:");
 		lblTelefono.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTelefono.setBounds(469, 154, 71, 14);
 		getContentPane().add(lblTelefono);

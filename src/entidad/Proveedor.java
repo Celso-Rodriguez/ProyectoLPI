@@ -1,6 +1,7 @@
 package entidad;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class Proveedor {
 	
@@ -11,10 +12,22 @@ public class Proveedor {
 	public String direccion;
 	public String telefono;
 	public String correo;
-	public Date fechaRegistro;
+	public Timestamp fechaRegistro;
 	private int estado;
 	private Pais pais;
 	
+	public String getFormatoPais() {
+		return pais.getNombre();
+	}
+	
+	public String getFormatoFechaRegistro() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(fechaRegistro);
+	}
+	
+	public String getFormatoEstado() {
+		return estado==1?"Activo":"Inactivo";
+	}
 	
 	public int getIdProveedor() {
 		return idProveedor;
@@ -58,10 +71,10 @@ public class Proveedor {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public Date getFechaRegistro() {
+	public Timestamp getFechaRegistro() {
 		return fechaRegistro;
 	}
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(Timestamp fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 	public int getEstado() {

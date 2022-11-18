@@ -259,7 +259,7 @@ public class FrmCrudLibro extends JInternalFrame implements ActionListener, Mous
 		int categoria = cboCategoria.getSelectedIndex();
 		boolean est = chkEstado.isSelected();
 		
-		if (!titulo.matches(Validaciones.TEXTO)) {
+		if (!titulo.matches(Validaciones.TEXTO_NUMERO)) {
 			mensaje("El nombre es de 2 a 20 caracteres");
 		}else if (!anio.matches(Validaciones.ANHO)) {
 			mensaje("la fecha tiene formato YYYY");	

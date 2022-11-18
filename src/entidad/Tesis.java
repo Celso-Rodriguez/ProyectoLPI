@@ -9,8 +9,8 @@ public class Tesis {
 	private String tema;
 	private Date fechaCreacion;
 	private Date fechaRegistro;
-	private int estado; private Alumno idAlumno;
-	
+	private int estado; 
+	private Alumno idAlumno;
 
 	public int getIdTesis() {
 		return idTesis;
