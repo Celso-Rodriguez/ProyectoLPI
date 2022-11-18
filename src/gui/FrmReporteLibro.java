@@ -100,7 +100,7 @@ public class FrmReporteLibro extends JInternalFrame implements ActionListener {
 			mensaje("La fecha Inicio tiene formato yyyy");
 		}else if (!fecFin.matches(Validaciones.ANHO)) {
 			mensaje("La fecha Fin tiene formato yyyy");
-		}else if (FechaUtil.isNotSuperiorFechaYYYYMMdd(fecIni, fecFin)) {
+		}else if (FechaUtil.isNotSuperiorFechaYYYY(fecIni, fecFin)) {
 			mensaje("La año fin es superior al año inicio");
 		}else {
 			int dtIni = Integer.valueOf(fecIni);
