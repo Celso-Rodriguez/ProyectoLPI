@@ -55,8 +55,8 @@ public class FrmReporteAlumno extends JInternalFrame implements ActionListener {
 		
 		JLabel lblReportePorFecha = new JLabel("Reporte por Fecha de Nacimiento del Alumno");
 		lblReportePorFecha.setHorizontalAlignment(SwingConstants.CENTER);
-		lblReportePorFecha.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblReportePorFecha.setBounds(10, 22, 1161, 36);
+		lblReportePorFecha.setFont(new Font("Tahoma", Font.BOLD, 27));
+		lblReportePorFecha.setBounds(10, 22, 1451, 69);
 		getContentPane().add(lblReportePorFecha);
 		
 		JLabel lblFechaInicio = new JLabel("Fecha Inicio :");
