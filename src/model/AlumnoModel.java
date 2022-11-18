@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -145,7 +146,7 @@ public class AlumnoModel {
 				a.setDni(rs.getString(5));
 				a.setCorreo(rs.getString(6));
 				a.setFechaNacimiento(rs.getDate(7));
-				a.setFechaRegistro(rs.getDate(8));
+				a.setFechaRegistro(rs.getTimestamp(8));
 				a.setEstado(rs.getInt(9));
 				
 				p = new Pais();
@@ -163,12 +164,115 @@ public class AlumnoModel {
 					pstm.close();
 				if (con != null)
 					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch (Exception e2) {
+				
 			}
 		}
 		return salida;
 	}
 	
-
+	public List<Alumno> listaPorPais(int idPais){
+		ArrayList<Alumno> salida = new ArrayList<Alumno>();
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		try {
+			//1 Se crea la conexion
+			conn = MySqlDBConexion.getConexion();
+			
+			//2 Se prepara el SQL
+			String sql = "SELECT a.*, p.nombre FROM Alumno a inner join Pais p on a.idPais = p.idPais where a.idPais = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, idPais);
+			
+			log.info(">>> " + psmt);
+			
+			//3 Se ejecuta el SQL en la base de datos
+			rs = psmt.executeQuery();
+			Alumno objAlumno = null;
+			Pais objPais = null;
+			while(rs.next()) {
+				objAlumno = new Alumno();
+				objAlumno.setIdAlumno(rs.getInt(1));
+				objAlumno.setNombres(rs.getString(2));
+				objAlumno.setApellidos(rs.getString(3));
+				objAlumno.setTelefono(rs.getString(4));
+				objAlumno.setDni(rs.getString(5));
+				objAlumno.setCorreo(rs.getString(6));
+				objAlumno.setFechaNacimiento(rs.getDate(7));
+				objAlumno.setFechaRegistro(rs.getTimestamp(8));
+				objAlumno.setEstado(rs.getInt(9));
+				
+				objPais = new Pais();
+				objPais.setIdPais(rs.getInt(10));
+				objPais.setNombre(rs.getString(11));
+				objAlumno.setPais(objPais);
+				salida.add(objAlumno);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (psmt != null) psmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {}
+		}
+		return salida;
+	}
+	
+	public List<Alumno> listaPorRangoFechas(Date fecIni, Date fecFin){
+		ArrayList<Alumno> salida = new ArrayList<Alumno>();
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		try {
+			//1 Se crea la conexion
+			conn = MySqlDBConexion.getConexion();
+			
+			//2 Se prepara el SQL
+			String sql = "SELECT a.*, p.nombre FROM alumno a inner join pais p on a.idPais = p.idPais where a.fechaNacimiento between ? and ? "; 
+			psmt = conn.prepareStatement(sql);
+			psmt.setDate(1, fecIni);
+			psmt.setDate(2, fecFin);
+			
+			log.info(">>> " + psmt);
+			
+			//3 Se ejecuta el SQL en la base de datos
+			rs = psmt.executeQuery();
+			Alumno objAlumno = null;
+			Pais objPais = null;
+			while(rs.next()) {
+				objAlumno = new Alumno();
+				objAlumno.setIdAlumno(rs.getInt(1));
+				objAlumno.setNombres(rs.getString(2));
+				objAlumno.setApellidos(rs.getString(3));
+				objAlumno.setTelefono(rs.getString(4));
+				objAlumno.setDni(rs.getString(5));
+				objAlumno.setCorreo(rs.getString(6));
+				objAlumno.setFechaNacimiento(rs.getDate(7));
+				objAlumno.setFechaRegistro(rs.getTimestamp(8));
+				objAlumno.setEstado(rs.getInt(9));
+				
+				objPais = new Pais();
+				objPais.setIdPais(rs.getInt(10));
+				objPais.setNombre(rs.getString(11));
+				objAlumno.setPais(objPais);
+				salida.add(objAlumno);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (psmt != null) psmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {}
+		}
+		return salida;
+	}
 }
