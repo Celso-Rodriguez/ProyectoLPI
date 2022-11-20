@@ -14,13 +14,14 @@ public class Sala {
 	private int estado;
 	private Sede sede;
 	
+	SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	public String getFormatoSede() {
 		return sede.getNombre();
 	}
 	public String getFormatoFechaRegistro() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		return sdf.format(fechaRegistro);
+		return sdf2.format(fechaRegistro);
 	}
 
 	

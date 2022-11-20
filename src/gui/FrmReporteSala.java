@@ -65,11 +65,13 @@ public class FrmReporteSala extends JInternalFrame implements ActionListener {
 		getContentPane().add(lblFechaFin);
 		
 		txtInicio = new JTextField();
+		txtInicio.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		txtInicio.setBounds(163, 135, 210, 24);
 		getContentPane().add(txtInicio);
 		txtInicio.setColumns(10);
 		
 		txtFin = new JTextField();
+		txtFin.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		txtFin.setColumns(10);
 		txtFin.setBounds(568, 135, 210, 24);
 		getContentPane().add(txtFin);
