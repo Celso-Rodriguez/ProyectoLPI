@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -16,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import entidad.Tesis;
@@ -27,14 +25,16 @@ import net.sf.jasperreports.swing.JRViewer;
 import util.FechaUtil;
 import util.GeneradorReporte;
 import util.Validaciones;
+import java.awt.BorderLayout;
+import java.awt.Color;
 
 public class FrmReporteTesis extends JInternalFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtfecini;
 	private JButton btnfiltrar;
-	private JPanel panelReporte;
 	private JTextField txtfecfin;
+	private JPanel panelReporte;
 
 	public FrmReporteTesis() {
 		
@@ -48,6 +48,8 @@ public class FrmReporteTesis extends JInternalFrame implements ActionListener {
 		getContentPane().setLayout(null);
 		
 		JLabel lblreporte = new JLabel("Reporte Tesis");
+		lblreporte.setForeground(new Color(0, 0, 160));
+		lblreporte.setBackground(new Color(0, 51, 255));
 		lblreporte.setFont(new Font("Leelawadee UI", Font.ITALIC, 35));
 		lblreporte.setHorizontalAlignment(SwingConstants.CENTER);
 		lblreporte.setBounds(10, 11, 1164, 87);
@@ -62,24 +64,26 @@ public class FrmReporteTesis extends JInternalFrame implements ActionListener {
 		getContentPane().add(txtfecini);
 		txtfecini.setColumns(10);
 		
-		btnfiltrar = new JButton("filtrar");
+		btnfiltrar = new JButton("FILTRAR");
+		btnfiltrar.setBackground(new Color(0, 102, 255));
 		btnfiltrar.addActionListener(this);
-		btnfiltrar.setBounds(933, 109, 89, 23);
+		btnfiltrar.setBounds(925, 109, 97, 29);
 		getContentPane().add(btnfiltrar);
 		
-		panelReporte = new JPanel();
-		panelReporte.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Reporte", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelReporte.setBounds(10, 172, 1164, 387);
-		getContentPane().add(panelReporte);
-		
 		JLabel lblNewLabel = new JLabel("Fecha Fin");
-		lblNewLabel.setBounds(378, 121, 46, 14);
+		lblNewLabel.setBounds(378, 121, 58, 14);
 		getContentPane().add(lblNewLabel);
 		
 		txtfecfin = new JTextField();
-		txtfecfin.setBounds(463, 118, 225, 20);
+		txtfecfin.setBounds(493, 118, 225, 20);
 		getContentPane().add(txtfecfin);
 		txtfecfin.setColumns(10);
+		
+		panelReporte = new JPanel();
+		panelReporte.setBorder(new TitledBorder(null, "Reportes", TitledBorder.CENTER, TitledBorder.TOP, null, null));
+		panelReporte.setBounds(10, 170, 1164, 389);
+		getContentPane().add(panelReporte);
+		panelReporte.setLayout(new BorderLayout());
 
 	}
 	public void actionPerformed(ActionEvent e) {
