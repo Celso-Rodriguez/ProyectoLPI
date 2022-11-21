@@ -1,6 +1,7 @@
 package entidad;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Tesis {
 	
@@ -8,7 +9,7 @@ public class Tesis {
 	private String titulo;
 	private String tema;
 	private Date fechaCreacion;
-	private Date fechaRegistro;
+	private Timestamp fechaRegistro;
 	private int estado; 
 	private Alumno idAlumno;
 
@@ -36,10 +37,10 @@ public class Tesis {
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
-	public Date getFechaRegistro() {
+	public Timestamp getFechaRegistro() {
 		return fechaRegistro;
 	}
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(Timestamp fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 	public int getEstado() {

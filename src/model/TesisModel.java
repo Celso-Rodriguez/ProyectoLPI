@@ -135,7 +135,7 @@ public class TesisModel {
 				a.setTitulo(rs.getString(2));
 				a.setTema(rs.getString(3));
 				a.setFechaCreacion(rs.getDate(4));
-				a.setFechaRegistro(rs.getDate(5));
+				a.setFechaRegistro(rs.getTimestamp(5));
 				a.setEstado(rs.getInt(6));
 				
 				p = new Alumno();
@@ -161,4 +161,57 @@ public class TesisModel {
 		return salida;
 	}
 	
+	public List<Tesis> listaPorAlumno(int idAlumno){
+		ArrayList<Tesis> salida = new ArrayList<Tesis>();
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		try {
+			//1 Se crea la conexion
+			conn = MySqlDBConexion.getConexion();
+			
+			//2 Se prepara el SQL
+			String sql = "SELECT t.*, a.nombres FROM Tesis t inner join alumno a on t.idAlumno = a.idAlumno where t.idAlumno = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, idAlumno);
+			
+			log.info(">>> " + psmt);
+		
+			rs = psmt.executeQuery();
+
+			Tesis 	a = null;
+			Alumno 	p = null;
+			while (rs.next()) {
+				a = new Tesis();
+
+				a.setIdTesis(rs.getInt(1));
+				a.setTitulo(rs.getString(2));
+				a.setTema(rs.getString(3));
+				a.setFechaCreacion(rs.getDate(4));
+				a.setFechaRegistro(rs.getTimestamp(5));
+				a.setEstado(rs.getInt(6));
+				
+				p = new Alumno();
+				p.setIdAlumno(rs.getInt(7));
+				p.setNombres(rs.getString(8));
+				a.setAlumno(p);
+				salida.add(a);
+			}
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (psmt != null)
+					psmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return salida;
+	}
 }
