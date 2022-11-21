@@ -119,8 +119,7 @@ public class FrmConsultaTesis extends JInternalFrame implements ItemListener {
 	if (e.getSource() == cboAlumno) {
 		itemStateChangedCboAlumnoJComboBoxBD(e);
 	}
-}
-	
+}	
 	protected void itemStateChangedCboAlumnoJComboBoxBD(ItemEvent e) {
 		if (e.getStateChange() == ItemEvent.SELECTED) {
 			int index = cboAlumno.getSelectedIndex();

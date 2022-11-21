@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 
 public class Tesis {
 	
-	
 	private int idTesis;
 	private String titulo;
 	private String tema;
