@@ -12,7 +12,6 @@ public class Tesis {
 	private Timestamp fechaRegistro;
 	private int estado; 
 	private Alumno idAlumno;
-
 	
 	public int getIdTesis() {
 		return idTesis;

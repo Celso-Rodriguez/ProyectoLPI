@@ -161,7 +161,6 @@ public class TesisModel {
 		return salida;
 	}
 	
-	
 	public List<Tesis> listaPorAlumno(int idAlumno){
 		ArrayList<Tesis> salida = new ArrayList<Tesis>();
 		
