@@ -144,7 +144,6 @@ public class TesisModel {
 				a.setAlumno(p);
 				salida.add(a);
 			}
-
 			
 		} catch (Exception e) {
 			e.printStackTrace();

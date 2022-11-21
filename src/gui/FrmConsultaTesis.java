@@ -56,7 +56,6 @@ public class FrmConsultaTesis extends JInternalFrame implements ItemListener {
 		getContentPane().add(cboAlumno);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		
 		scrollPane.setBounds(10, 180, 964, 379);
 		getContentPane().add(scrollPane);
 		
@@ -106,8 +105,6 @@ public class FrmConsultaTesis extends JInternalFrame implements ItemListener {
 		
 		//Desahilitar la edicion en las celdas
 		table.setDefaultEditor(Object.class, null);
-	
-		
 		scrollPane.setViewportView(table);
 	
 	}
@@ -161,3 +158,4 @@ public class FrmConsultaTesis extends JInternalFrame implements ItemListener {
 		}
 	}
 }
+
