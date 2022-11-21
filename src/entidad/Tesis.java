@@ -13,6 +13,7 @@ public class Tesis {
 	private int estado; 
 	private Alumno idAlumno;
 
+	
 	public int getIdTesis() {
 		return idTesis;
 	}

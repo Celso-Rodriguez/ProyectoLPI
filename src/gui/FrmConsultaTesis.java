@@ -156,5 +156,6 @@ public class FrmConsultaTesis extends JInternalFrame implements ItemListener {
 			}	
 		}
 	}
+	
 }
 
