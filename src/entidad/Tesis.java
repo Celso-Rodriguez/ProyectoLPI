@@ -2,6 +2,7 @@ package entidad;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class Tesis {
 	
@@ -12,6 +13,25 @@ public class Tesis {
 	private Timestamp fechaRegistro;
 	private int estado; 
 	private Alumno idAlumno;
+	
+	//INICIO atributos para el reporte
+		SimpleDateFormat sdfFecini = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdfFecreg = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		public String getFormatoCreacion() {
+			return sdfFecini.format(fechaCreacion);
+		}
+		public String getFormatoRegistro() {
+			return sdfFecreg.format(fechaRegistro);
+		}
+		public String getFormatoEstado() {
+			return estado == 1 ? "Activo":"Inactivo";
+		}
+		public String getFormatoAlumno() {
+			return idAlumno.getNombres();
+		}
+		//FIN atributos para el reporte
+	
 	
 	public int getIdTesis() {
 		return idTesis;
