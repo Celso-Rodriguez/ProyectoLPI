@@ -1,6 +1,7 @@
 package entidad;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class Autor {
 	
@@ -12,6 +13,24 @@ public class Autor {
 	private Date fechaRegistro;
 	private int estado;
 	private Grado grado;
+	
+	//Inicio get para el reporte
+	SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
+	public String getFormatoEstado() {
+		return estado == 1 ? "Activo" : "Inactivo";
+	}
+	public String getFormatoGrado() {
+		return grado.getDescripcion();
+	}
+	public String getFormatoFecNacimiento() {
+		return sdf1.format(fechaNacimiento);
+	}
+	public String getFormatoFecRegistro() {
+		return sdf2.format(fechaRegistro);
+	}
+	//Fin 
 	
 	public int getIdAutor() {
 		return idAutor;

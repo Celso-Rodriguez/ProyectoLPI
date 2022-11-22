@@ -277,13 +277,13 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		mntReporteProveedor.addActionListener(this);
 		mnReporte.add(mntReporteProveedor);
 
-		// Paso 2: Se añade los menus a la lista
+		// Paso 2: Se aï¿½ade los menus a la lista
 		listaMenus.add(mnAdministracin);
 		listaMenus.add(mnCrud);
 		listaMenus.add(mnConsultas);
 		listaMenus.add(mnReporte);
 		
-		// Paso 3: Se añade los items de menu a la lista
+		// Paso 3: Se aï¿½ade los items de menu a la lista
 		listaItemMenus.add(mntRegAlumno);
 		listaItemMenus.add(mntRegAutor);
 		listaItemMenus.add(mntRegLibro);
@@ -346,7 +346,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 		try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
 
-			FrmPrincipal jf = new FrmPrincipal("Sistema de gestión de biblioteca", 900, 600);
+			FrmPrincipal jf = new FrmPrincipal("Sistema de gestiï¿½n de biblioteca", 900, 600);
 			jf.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			jf.setVisible(false);
 
@@ -362,7 +362,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 	}
 
 	public void windowClosing(WindowEvent e) {
-		int n = JOptionPane.showConfirmDialog(e.getWindow(), "¿Desea cerrar la aplicación?", "Confirmación",
+		int n = JOptionPane.showConfirmDialog(e.getWindow(), "Desea cerrar la aplicaci\\u00f3n?", "Confirmaci\\u00f3n",
 				JOptionPane.YES_NO_OPTION);
 		if (n == JOptionPane.YES_OPTION) {
 			System.exit(0);
