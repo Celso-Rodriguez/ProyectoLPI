@@ -64,20 +64,22 @@ public class FrmConsultaAutor extends JInternalFrame implements ItemListener {
 		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-					"ID", "Nombres", "Apellidos", "Fecha de Nacimiento", "Tel\u00E9fono", "Estado", "IdGrado", "Grado"
-				}
-			));
-			table.getColumnModel().getColumn(0).setPreferredWidth(50);
-			table.getColumnModel().getColumn(1).setPreferredWidth(150);
-			table.getColumnModel().getColumn(2).setPreferredWidth(150);
-			table.getColumnModel().getColumn(3).setPreferredWidth(150);
-			table.getColumnModel().getColumn(4).setPreferredWidth(100);
-			table.getColumnModel().getColumn(5).setPreferredWidth(50);
-			table.getColumnModel().getColumn(6).setPreferredWidth(100);
-			table.getColumnModel().getColumn(7).setPreferredWidth(100);
+			new Object[][] {
+			},
+			new String[] {
+				"C\u00F3digo", "Nombres", "Apellidos", "Fecha de Nacimiento", "Tel\u00E9fono", "Estado", "IdGrado", "Grado"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(50);
+		table.getColumnModel().getColumn(1).setPreferredWidth(150);
+		table.getColumnModel().getColumn(2).setPreferredWidth(150);
+		table.getColumnModel().getColumn(3).setPreferredWidth(150);
+		table.getColumnModel().getColumn(4).setPreferredWidth(100);
+		table.getColumnModel().getColumn(5).setPreferredWidth(50);
+		table.getColumnModel().getColumn(6).setPreferredWidth(0);
+		table.getColumnModel().getColumn(6).setMinWidth(0);
+		table.getColumnModel().getColumn(6).setMaxWidth(0);
+		table.getColumnModel().getColumn(7).setPreferredWidth(100);
 			scrollPane.setViewportView(table);
 			
 			//color de la fila seleccionada
@@ -86,11 +88,6 @@ public class FrmConsultaAutor extends JInternalFrame implements ItemListener {
 			//alineacion
 			DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
 			rightRenderer.setHorizontalAlignment(JLabel.CENTER);
-			table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
-			table.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
-			table.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
-			table.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
-			table.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
 							
 			//desabilita el cambio de tamaño
 			table.getTableHeader().setResizingAllowed(false);
@@ -105,11 +102,6 @@ public class FrmConsultaAutor extends JInternalFrame implements ItemListener {
 			//Desahilitar la edicion en las celdas
 			table.setDefaultEditor(Object.class, null);
 			scrollPane.setViewportView(table);
-			
-			//Ocultar fila 6
-		    table.getColumnModel().getColumn(6).setMinWidth(0);
-		    table.getColumnModel().getColumn(6).setMaxWidth(0);
-		    table.getColumnModel().getColumn(6).setWidth(0);
 	}
 	
 	public void mensaje(String ms) {

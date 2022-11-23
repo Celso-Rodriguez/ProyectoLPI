@@ -136,7 +136,7 @@ public class FrmCrudAutor extends JInternalFrame implements ActionListener, Mous
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "Nombres", "Apellidos", "Fecha de Nacimiento", "Tel\u00E9fono", "Estado", "IdGrado", "Grado"
+				"C\u00F3digo", "Nombres", "Apellidos", "Fecha de Nacimiento", "Tel\u00E9fono", "Estado", "IdGrado", "Grado"
 			}
 		));
 		table.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -145,7 +145,9 @@ public class FrmCrudAutor extends JInternalFrame implements ActionListener, Mous
 		table.getColumnModel().getColumn(3).setPreferredWidth(150);
 		table.getColumnModel().getColumn(4).setPreferredWidth(100);
 		table.getColumnModel().getColumn(5).setPreferredWidth(50);
-		table.getColumnModel().getColumn(6).setPreferredWidth(100);
+		table.getColumnModel().getColumn(6).setPreferredWidth(0);
+		table.getColumnModel().getColumn(6).setMinWidth(0);
+		table.getColumnModel().getColumn(6).setMaxWidth(0);
 		table.getColumnModel().getColumn(7).setPreferredWidth(100);
 		scrollPane.setViewportView(table);
 		
@@ -174,11 +176,6 @@ public class FrmCrudAutor extends JInternalFrame implements ActionListener, Mous
 		//alineacion
 		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
 		rightRenderer.setHorizontalAlignment(JLabel.CENTER);
-		table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
-		table.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
-		table.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
-		table.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
-		table.getColumnModel().getColumn(6).setCellRenderer(rightRenderer);
 						
 		//desabilita el cambio de tamaño
 		table.getTableHeader().setResizingAllowed(false);
@@ -193,11 +190,6 @@ public class FrmCrudAutor extends JInternalFrame implements ActionListener, Mous
 		//Desahilitar la edicion en las celdas
 		table.setDefaultEditor(Object.class, null);
 		scrollPane.setViewportView(table);
-		
-		//Ocultar fila 6
-	    table.getColumnModel().getColumn(6).setMinWidth(0);
-	    table.getColumnModel().getColumn(6).setMaxWidth(0);
-	    table.getColumnModel().getColumn(6).setWidth(0);
 				
 		lista();
 
