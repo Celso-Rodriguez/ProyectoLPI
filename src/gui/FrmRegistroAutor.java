@@ -136,7 +136,7 @@ public class FrmRegistroAutor extends JInternalFrame implements ActionListener {
 		}else if(!fec.matches(Validaciones.FECHA)) {
 			mensaje("La fecha tiene formato YYY-MM-dd");
 		}else if(!tel.matches(Validaciones.FONO)) {
-			mensaje("El teléfono es de 9 d\u00edgitos y empieza en 9");
+			mensaje("El tel\u00e9fono es de 9 d\u00edgitos y empieza en 9");
 		}else if(index == 0) {
 			mensaje("Seleccione un Grado");
 		}else {
