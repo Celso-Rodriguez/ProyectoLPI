@@ -468,7 +468,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 			if (salida > 0) {
 				lista();
 				idSeleccionado = -1;
-				mensaje("Se elimino correctamente");
+				mensaje("Se elimin\u00f3 correctamente");
 				limpiarCajasTexto();
 				
 			}else {
@@ -480,7 +480,6 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 	private boolean getBooleanEstado(String estado) {
 		return estado == "Activo"? true:false;
 	}
-	
 	
 	
 
