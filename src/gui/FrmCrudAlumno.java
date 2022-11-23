@@ -159,6 +159,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 		));
 		
 		
+		
 		//tamano de la fila	
 		table.getColumnModel().getColumn(0).setPreferredWidth(8);
 		table.getColumnModel().getColumn(1).setPreferredWidth(70);
