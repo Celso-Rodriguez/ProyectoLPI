@@ -153,19 +153,19 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		int index = cboPais.getSelectedIndex();
 		
 		if(!nom.matches(Validaciones.TEXTO)) {
-			mensaje ("El NOMBRE es de 2 a 20 caracteres");
+			mensaje ("El Nombre es de 2 a 20 caracteres");
 		}else if (!ape.matches(Validaciones.TEXTO)) {
-			mensaje ("El APELLIDO es de 2 a 20 caracteres");
+			mensaje ("El Apellido es de 2 a 20 caracteres");
 		}else if(!tel.matches(Validaciones.FONO)) {
-			mensaje ("El TELÉFONO debe empezar con 9 ");
+			mensaje ("El Tel\u00e9fono debe empezar con 9 ");
 		}else if(!dni.matches(Validaciones.DNI)) {
-			mensaje ("El DNI es de 8 digitos");
+			mensaje ("El Dni es de 8 digitos");
 		}else if(!cor.matches(Validaciones.CORREO)) {
-			mensaje ("El CORREO debe tener un '@' y '.'");
+			mensaje ("El Correo debe tener un '@' y '.'");
 		}else if (!fec.matches(Validaciones.FECHA)) {
 			mensaje("La fecha tiene formato YYYY-MM-dd");
 		}else if(index==0) {
-			mensaje("Seleccione un País");
+			mensaje("Seleccione un Pa\u00eds");
 		}else {
 			String pais = cboPais.getSelectedItem().toString();
 			String idPais = pais.split(":")[0];
@@ -188,7 +188,7 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 			
 			
 			if (s > 0) {
-				mensaje("SE INSERTO CORRECTAMENTE");
+				mensaje("SE INSERT\u00d3 CORRECTAMENTE");
 			}else {
 				mensaje("ERROR EN EL REGISTRO");
 			}

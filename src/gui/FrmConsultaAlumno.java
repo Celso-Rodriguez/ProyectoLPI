@@ -51,7 +51,7 @@ public class FrmConsultaAlumno extends JInternalFrame implements ItemListener {
 		lblConsultaAlumno.setBounds(10, 11, 1199, 79);
 		getContentPane().add(lblConsultaAlumno);
 		
-		JLabel lblPais = new JLabel("Pais :");
+		JLabel lblPais = new JLabel("Pa\u00eds :");
 		lblPais.setFont(new Font("Arial Narrow", Font.PLAIN, 18));
 		lblPais.setBounds(52, 132, 46, 14);
 		getContentPane().add(lblPais);
@@ -70,7 +70,7 @@ public class FrmConsultaAlumno extends JInternalFrame implements ItemListener {
 			new Object[][] {
 			},
 			new String[] {
-				"Código", "Nombres", "Apellidos", "Teléfono", "Dni", "Correo", "Fecha de Nacimiento", "Fecha Registro", "Estado", "País"
+				"C\u00f3digo", "Nombres", "Apellidos", "Tel\u00e9fono", "Dni", "Correo", "Fecha de Nacimiento", "Fecha Registro", "Estado", "Pa\u00eds"
 			}
 		));
 		

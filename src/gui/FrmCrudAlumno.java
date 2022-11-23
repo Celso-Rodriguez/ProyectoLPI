@@ -78,7 +78,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 		lblApellidos.setBounds(383, 80, 78, 25);
 		getContentPane().add(lblApellidos);
 		
-		JLabel lblTelefono = new JLabel("Telefono :");
+		JLabel lblTelefono = new JLabel("Tel\u00e9fono :");
 		lblTelefono.setFont(new Font("Arial Narrow", Font.BOLD, 15));
 		lblTelefono.setBounds(625, 80, 61, 25);
 		getContentPane().add(lblTelefono);
@@ -154,9 +154,10 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 			new Object[][] {
 			},
 			new String[] {
-				"Código", "Nombres", "Apellidos", "Teléfono", "Dni", "Correo", "Fecha de Nacimiento", "Estado","Id Pais", "País"
+				"C\u00f3digo", "Nombres", "Apellidos", "Tel\u00e9fono", "Dni", "Correo", "Fecha de Nacimiento", "Estado","Id Pais", "Pa\u00eds"
 			}
 		));
+		
 		
 		//tamano de la fila	
 		table.getColumnModel().getColumn(0).setPreferredWidth(8);
@@ -170,7 +171,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 		table.getColumnModel().getColumn(9).setPreferredWidth(120);
 		scrollPane.setViewportView(table);
 		
-		JLabel lblPais = new JLabel("Pais :");
+		JLabel lblPais = new JLabel("Pa\u00eds :");
 		lblPais.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPais.setFont(new Font("Arial Narrow", Font.BOLD, 15));
 		lblPais.setBounds(700, 154, 147, 25);
@@ -309,7 +310,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 		}else if (!ape.matches(Validaciones.TEXTO)) {
 			mensaje("El Apellido es de 2 a 20 caracteres");
 		}else if (!tel.matches(Validaciones.FONO)) {
-			mensaje("El Telefono debe empezar con '9'");
+			mensaje("El Tel\u00e9fono debe empezar con '9'");
 		}else if (!dni.matches(Validaciones.DNI)) {
 			mensaje("El DNI debe ser de maximo 8 caracteres");
 		}else if (!cor.matches(Validaciones.CORREO)) {
@@ -317,7 +318,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 		}else if (!fec.matches(Validaciones.FECHA)) {
 			mensaje("la fecha tiene formato YYYY-MM-dd");
 		}else if (posPais == 0) {
-			mensaje("Selecciona un País");
+			mensaje("Selecciona un Pa\u00eds");
 		}else {
 			String pais = cboPais.getSelectedItem().toString();
 			String idPais = pais.split(":")[0];
@@ -342,7 +343,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 			AlumnoModel model = new AlumnoModel();
 			int salida = model.insertaAlumno(objAlum);
 			if (salida > 0) {
-				mensaje("Se insertó correctamente");
+				mensaje("Se insert\u00f3 correctamente");
 				lista();
 				limpiarCajasTexto();
 			}else {
@@ -409,7 +410,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 		}else if (!ape.matches(Validaciones.TEXTO)) {
 			mensaje("El Apellido es de 2 a 20 caracteres");
 		}else if (!tel.matches(Validaciones.FONO)) {
-			mensaje("El Teléfono debe empezar con '9'");
+			mensaje("El Tel\u00e9fono debe empezar con '9'");
 		}else if (!dni.matches(Validaciones.DNI)) {
 			mensaje("El DNI debe ser de maximo 8 caracteres");
 		}else if (!cor.matches(Validaciones.CORREO)) {
@@ -417,7 +418,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 		}else if (!fec.matches(Validaciones.FECHA)) {
 			mensaje("la fecha tiene formato YYYY-MM-dd");
 		}else if (posPais == 0) {
-			mensaje("Selecciona un País");
+			mensaje("Selecciona un Pa\u00eds");
 		}else {
 			String pais = cboPais.getSelectedItem().toString();
 			String idPais = pais.split(":")[0];
@@ -445,7 +446,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 			if (salida > 0) {
 				lista();
 				idSeleccionado = -1;
-				mensaje("Se actualizó correctamente");
+				mensaje("Se actualiz\u00f3 correctamente");
 				limpiarCajasTexto();
 				
 			}else {
@@ -470,7 +471,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 				limpiarCajasTexto();
 				
 			}else {
-				mensaje("Error en el Eliminación");
+				mensaje("Error en el Eliminaci\u00f3n");
 			}
 		}
 	}
