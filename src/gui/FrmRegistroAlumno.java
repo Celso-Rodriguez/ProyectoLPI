@@ -157,7 +157,7 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		}else if (!ape.matches(Validaciones.TEXTO)) {
 			mensaje ("El APELLIDO es de 2 a 20 caracteres");
 		}else if(!tel.matches(Validaciones.FONO)) {
-			mensaje ("El TELEFONO debe empezar con 9 ");
+			mensaje ("El TELÉFONO debe empezar con 9 ");
 		}else if(!dni.matches(Validaciones.DNI)) {
 			mensaje ("El DNI es de 8 digitos");
 		}else if(!cor.matches(Validaciones.CORREO)) {
@@ -165,7 +165,7 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 		}else if (!fec.matches(Validaciones.FECHA)) {
 			mensaje("La fecha tiene formato YYYY-MM-dd");
 		}else if(index==0) {
-			mensaje("Seleccione un Pais");
+			mensaje("Seleccione un País");
 		}else {
 			String pais = cboPais.getSelectedItem().toString();
 			String idPais = pais.split(":")[0];
@@ -185,6 +185,7 @@ public class FrmRegistroAlumno extends JInternalFrame implements ActionListener 
 			
 			AlumnoModel model = new AlumnoModel();
 			int s = model.insertaAlumno(objAlumno);
+			
 			
 			if (s > 0) {
 				mensaje("SE INSERTO CORRECTAMENTE");

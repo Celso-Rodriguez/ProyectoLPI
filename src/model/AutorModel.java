@@ -212,7 +212,7 @@ private static Logger log = Logger.getLogger(AutorModel.class.getName());
 			conn = MySqlDBConexion.getConexion();
 			
 			//2 Se prepara el SQL
-			String sql = "select a.*, g.descripcion from autor a inner join grado_autor g on a.idGrado = g.idGrado where a.fechaNacimiento between ? and ?";
+			String sql = "select a.*, g.descripcion from autor a inner join grado_autor g on a.idGrado = g.idGrado where a.fechaNacimiento between ? and ? ";
 			psmt = conn.prepareStatement(sql);
 			psmt.setDate(1, fecIni);
 			psmt.setDate(2, fecFin);

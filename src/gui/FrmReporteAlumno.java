@@ -88,6 +88,7 @@ public class FrmReporteAlumno extends JInternalFrame implements ActionListener {
 			actionPerformedBtnFiltrarJButton(e);
 		}
 	}
+	
 	protected void actionPerformedBtnFiltrarJButton(ActionEvent e) {
 		String fecIni  = txtFechaInicio.getText().trim();
 		String fecFin  = txtFechaFin.getText().trim();

@@ -154,7 +154,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 			new Object[][] {
 			},
 			new String[] {
-				"Codigo", "Nombres", "Apellidos", "Telefono", "Dni", "Correo", "Fecha de Nacimiento", "Estado","Id Pais", "Pais"
+				"Código", "Nombres", "Apellidos", "Teléfono", "Dni", "Correo", "Fecha de Nacimiento", "Estado","Id Pais", "País"
 			}
 		));
 		
@@ -352,6 +352,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 		}
 		
 	}
+	
 	public void busca() {
 		//OBTIENE LA FILA SELECCIONADA
 		int fila = table.getSelectedRow();
@@ -366,6 +367,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 		String estado =  	(String)table.getValueAt(fila, 7);
 		Integer idPais = 	(Integer)table.getValueAt(fila, 8);
 		String nomPais = 	(String)table.getValueAt(fila, 9);
+		
 		
 		/*System.out.println(idSeleccionado 	+ " - " + nombre 
 											+ " - " + apellido 
@@ -407,7 +409,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 		}else if (!ape.matches(Validaciones.TEXTO)) {
 			mensaje("El Apellido es de 2 a 20 caracteres");
 		}else if (!tel.matches(Validaciones.FONO)) {
-			mensaje("El Telefono debe empezar con '9'");
+			mensaje("El Teléfono debe empezar con '9'");
 		}else if (!dni.matches(Validaciones.DNI)) {
 			mensaje("El DNI debe ser de maximo 8 caracteres");
 		}else if (!cor.matches(Validaciones.CORREO)) {
@@ -443,7 +445,7 @@ public class FrmCrudAlumno extends JInternalFrame implements ActionListener, Mou
 			if (salida > 0) {
 				lista();
 				idSeleccionado = -1;
-				mensaje("Se actualizo correctamente");
+				mensaje("Se actualizó correctamente");
 				limpiarCajasTexto();
 				
 			}else {
