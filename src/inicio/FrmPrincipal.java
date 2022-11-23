@@ -362,7 +362,7 @@ public class FrmPrincipal extends JFrame implements WindowListener, ActionListen
 	}
 
 	public void windowClosing(WindowEvent e) {
-		int n = JOptionPane.showConfirmDialog(e.getWindow(), "Desea cerrar la aplicaci\\u00f3n?", "Confirmaci\\u00f3n",
+		int n = JOptionPane.showConfirmDialog(e.getWindow(), "Desea cerrar la aplicaci\u00f3n?", "Confirmaci\u00f3n",
 				JOptionPane.YES_NO_OPTION);
 		if (n == JOptionPane.YES_OPTION) {
 			System.exit(0);

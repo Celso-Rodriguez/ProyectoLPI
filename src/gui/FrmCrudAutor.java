@@ -277,7 +277,7 @@ public class FrmCrudAutor extends JInternalFrame implements ActionListener, Mous
 		}else if(!fec.matches(Validaciones.FECHA)) {
 			mensaje("La fecha debe tener formato YYY-MM-dd");
 		}else if(!tel.matches(Validaciones.FONO)) {
-			mensaje("El teléfono es de 9 d\u00edgitos y empieza en 9");
+			mensaje("El tel\u00e9fono es de 9 d\u00edgitos y empieza en 9");
 		}else if(index == 0) {
 			mensaje("Seleccione un Grado");
 		}else {
@@ -321,7 +321,7 @@ public class FrmCrudAutor extends JInternalFrame implements ActionListener, Mous
 		}else if (!fec.matches(Validaciones.FECHA)) {
 			mensaje("la fecha tiene formato YYYY-MM-dd");
 		}else if (!tel.matches(Validaciones.FONO)) {
-			mensaje("El telefono debe tener 9 digitos");
+			mensaje("El tel\u00e9fono debe tener 9 digitos");
 		}else if(iGrado == 0) {
 			mensaje("Selecciona un Grado");
 		}else {
@@ -348,10 +348,10 @@ public class FrmCrudAutor extends JInternalFrame implements ActionListener, Mous
 			if (salida > 0) {
 				lista();
 				idSeleccionado = -1;
-				mensaje("Se actualizo correctamente");
+				mensaje("Se actualiz\u00f3 correctamente");
 				limpiarCajasTexto();
 			}else {
-				mensaje("Error al Actualizar");
+				mensaje("Error al actualizar");
 			}
 		}
 		
