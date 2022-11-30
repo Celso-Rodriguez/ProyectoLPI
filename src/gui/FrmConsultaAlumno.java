@@ -70,7 +70,7 @@ public class FrmConsultaAlumno extends JInternalFrame implements ItemListener {
 			new Object[][] {
 			},
 			new String[] {
-				"C\u00f3digo", "Nombres", "Apellidos", "Tel\u00e9fono", "Dni", "Correo", "Fecha de Nacimiento", "Fecha Registro", "Estado", "Pa\u00eds"
+				"C\u00f3digo", "Nombres", "Apellidos", "Tel\u00e9fono", "DNI", "Correo", "Fecha de Nacimiento", "Fecha Registro", "Estado", "Pa\u00eds"
 			}
 		));
 		
